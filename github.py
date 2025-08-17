@@ -1,5 +1,4 @@
 import os
-
 import pkg_resources
 import requests
 from dotenv import load_dotenv
@@ -7,8 +6,7 @@ from git import Repo
 
 class GitHubPusher:
     def __init__(self, project_path=None):
-        self.generate_requirements()
-        load_dotenv()
+        load_dotenv()  # Load environment variables first
         self.token = os.environ.get("GITHUB_TOKEN")
         if not self.token:
             raise Exception("❌ GITHUB_TOKEN not found in .env")
@@ -27,6 +25,7 @@ class GitHubPusher:
         if not self.has_internet():
             raise Exception("❌ No internet connection. Aborting!")
 
+        self.generate_requirements()  # Generate requirements in safe location
         self.push_to_github()
 
     def generate_requirements(self):
@@ -39,7 +38,7 @@ class GitHubPusher:
         print(f"Found {len(packages_list)} packages.")
 
         # Save in the current working directory
-        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'requirements.txt')
+        file_path = os.path.join(self.project_path, 'requirements.txt')
 
         with open(file_path, 'w') as f:
             for package in packages_list:
@@ -85,14 +84,14 @@ class GitHubPusher:
             print("📦 Initializing local Git repository...")
             repo = Repo.init(self.project_path)
 
-            # Ignore unwanted files/folders
+            # Standard ignore list for sensitive/unnecessary files
             ignore_dirs = {'.idea', '__pycache__', '.venv'}
-            ignore_files = {'.env'}
+            ignore_files = {'.env', 'Thumbs.db', '.DS_Store'}
 
             for root, dirs, files in os.walk(self.project_path):
                 dirs[:] = [d for d in dirs if d not in ignore_dirs]
                 for file in files:
-                    if file in ignore_files or file.endswith(".pyc") or file.endswith(".env"):
+                    if file in ignore_files or file.endswith(".pyc"):
                         continue
                     repo.git.add(os.path.join(root, file))
 

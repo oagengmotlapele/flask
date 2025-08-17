@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from flask import Flask
 from src.view.blueprint import auth, errors, index
 from dotenv import load_dotenv
@@ -16,8 +18,10 @@ def create_app():
     app.config.update(
         SESSION_COOKIE_HTTPONLY=True,
         SESSION_COOKIE_SECURE= True if os.getenv("production") == 'True' else False,
-        SESSION_COOKIE_SAMESITE='Lax',
-        WTF_CSRF_TIME_LIMIT=None
+        SESSION_COOKIE_SAMESITE="Strict",
+        SESSION_REFRESH_EACH_REQUEST=True,
+        WTF_CSRF_TIME_LIMIT=None,
+        SESSION_USE_SIGNER = True
     )
 
     return app

@@ -1,14 +1,6 @@
-import base64
-import json
-import os
-from datetime import datetime
-
 import matplotlib
 from dotenv import load_dotenv
 from flask import Blueprint, render_template, request,redirect, session, url_for
-from flectra.addons.web.controllers.main import Session
-
-
 from src.controller.MySQLControllerFlask import MySQLManager
 from src.middlewares.encode import Encode
 from src.utils.Security import Security

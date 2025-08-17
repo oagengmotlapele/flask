@@ -10,7 +10,7 @@ class Security:
     def __init__(self):
         self.system_users = [
             # System Owners & Developers (65Bugs Pty Ltd)
-            'System Owner (65Bugs Pty Ltd)',
+            'System Owner',
             'Project Manager',
             'Business Analyst',
             'System Architect',
@@ -22,9 +22,9 @@ class Security:
             'DevOps Engineer',
             'System Administrator',
             'QA Tester',
-            'UI/UX Designer',
+            'UI Or UX Designer',
             'Technical Support Specialist',
-            'Trainer / User Support',
+            'Trainer Or User Support',
             'Cybersecurity Specialist',
 
             # Ministry & HQ Level
@@ -32,7 +32,7 @@ class Security:
             'Permanent Secretary',
             'Deputy Permanent Secretary',
             'Chief Education Officer',
-            'Regional/District Education Officer',
+            'Regional Or District Education Officer',
             'School Inspector',
             'Policy Maker',
             'Curriculum Developer',
@@ -40,10 +40,10 @@ class Security:
             # School Management
             'School Principal',
             'Vice Principal',
-            'Head of House (Head of Department)',
-            'Head of Subject (Senior Teacher)',
+            'Head of House or Head of Department',
+            'Head of Subject or Senior Teacher',
             'School Administrator',
-            'Bursar/Finance Officer',
+            'Bursar or Finance Officer',
             'Exams Officer',
             'Records Clerk',
 
@@ -73,14 +73,15 @@ class Security:
             'Education NGO Representative',
             'Government Auditor',
             'Researcher',
-            'Donor/Partner Organization',
+            'Donor Or Partner Organization',
         ]
 
         load_dotenv()
         self.key = os.environ.get("app_secrect")
         self.fernet = Fernet(self.generate_supported_fernet_key(self.key))
         self.salt = self.key
-
+    def get_all_users(self):
+        return self.system_users
     def generate_supported_fernet_key(self,raw_key: str) -> bytes:
         """
         Takes any string and returns a valid 32-byte base64-encoded Fernet key.
@@ -100,14 +101,13 @@ class Security:
 
         return fernet_key
 
-    def create_session(self, user_id, user_role):
+    def create_session(self, user_id):
         """
         Creates an encrypted session dict with automatic expiry.
         Returns encrypted string.
         """
         session = {
             "user_id": user_id,
-            "user_role": user_role,
             "date_and_time_of_login": datetime.now().isoformat(),
             "expires_at": (datetime.now() + timedelta(days=1)).isoformat()
         }
@@ -142,6 +142,6 @@ class Security:
         pass
 
 security = Security()
-f=security.create_session(1,"IT Help desk")
+f=security.create_session(1)
 print(f)
 print(security.decrypt_session(f))

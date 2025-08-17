@@ -85,7 +85,7 @@ class GitHubPusher:
             repo = Repo.init(self.project_path)
 
             # Standard ignore list for sensitive/unnecessary files
-            ignore_dirs = {'.idea', '__pycache__', '.venv'}
+            ignore_dirs = {'.idea', '__pycache__', '.venv','venv'}
             ignore_files = {'.env', 'Thumbs.db', '.DS_Store'}
 
             for root, dirs, files in os.walk(self.project_path):

@@ -59,7 +59,7 @@ All AI functionalities are integrated into the Flask web application, providing 
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git@github.com:oagengmotlapele/flask.git
    ```
 2. Install required dependencies:
 

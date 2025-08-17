@@ -75,14 +75,13 @@ All AI functionalities are integrated into the Flask web application, providing 
 5. Access the system via your web browser.
 
 ---
+
 ## 📬 Get in Touch  
 <p align="center">
-  <a href="mailto:oagengmtlapele@gmail.com" title="Email"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/gmail.svg" alt="Email" width="40" height="40"/></a>
-  <a href="https://www.linkedin.com/in/oageng-motlapele-853387264/" title="LinkedIn"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/linkedin.svg" alt="LinkedIn" width="40" height="40"/></a>
-  <a href="https://github.com/oagengmotlapele" title="GitHub"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/github.svg" alt="GitHub" width="40" height="40"/></a>
-  <a href="https://web.facebook.com/peacedodobane.sechele" title="Facebook"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/facebook.svg" alt="Facebook" width="40" height="40"/></a>
-  <a href="https://www.instagram.com/oagengmotlapele/" title="Instagram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/instagram.svg" alt="Instagram" width="40" height="40"/></a>
-  <a href="https://wa.me/26772693981" title="WhatsApp"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/whatsapp.svg" alt="WhatsApp" width="40" height="40"/></a>
+  <a href="mailto:oagengmtlapele@gmail.com"><img src="https://img.shields.io/badge/Email-oagengmtlapele%40gmail.com-red?logo=gmail&logoColor=white" /></a>
+  <a href="https://www.linkedin.com/in/oageng-motlapele-853387264/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?logo=linkedin&logoColor=white" /></a>
+  <a href="https://github.com/oagengmotlapele"><img src="https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white" /></a>
+  <a href="https://web.facebook.com/peacedodobane.sechele"><img src="https://img.shields.io/badge/Facebook-1877F2?logo=facebook&logoColor=white" /></a>
+  <a href="https://www.instagram.com/oagengmotlapele/"><img src="https://img.shields.io/badge/Instagram-E4405F?logo=instagram&logoColor=white" /></a>
+  <a href="https://wa.me/26772693981"><img src="https://img.shields.io/badge/WhatsApp-25D366?logo=whatsapp&logoColor=white" /></a>
 </p>
-
-

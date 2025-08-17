@@ -39,10 +39,9 @@ class GitHubPusher:
         print(f"Found {len(packages_list)} packages.")
 
         # Save in the current working directory
-        print(os.path.dirname(os.path.abspath(__file__)))
-        file_path = os.path.join(os.getcwd(), 'requirements.txt')
+        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'requirements.txt')
 
-        with open("requirement.txt", 'w') as f:
+        with open(file_path, 'w') as f:
             for package in packages_list:
                 f.write(package + '\n')
 

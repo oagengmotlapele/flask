@@ -29,20 +29,23 @@ class GitHubPusher:
 
         self.push_to_github()
 
-    def generate_requirements(self,file_path='requirements.txt'):
+    def generate_requirements(self):
         """
         Generate a requirements.txt file with all installed packages
-        in the current environment.
+        in the current working directory.
         """
         installed_packages = pkg_resources.working_set
         packages_list = sorted([f"{pkg.key}=={pkg.version}" for pkg in installed_packages])
-        print(packages_list)
+        print(f"Found {len(packages_list)} packages.")
+
+        # Save in the current working directory
+        file_path = os.path.join(os.getcwd(), 'requirements.txt')
+
         with open(file_path, 'w') as f:
             for package in packages_list:
                 f.write(package + '\n')
-            f.close()
 
-        print(f"requirements.txt generated with {len(packages_list)} packages!")
+        print(f"requirements.txt generated at: {file_path}")
 
     def has_internet(self, url="https://api.github.com"):
         try:

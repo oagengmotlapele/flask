@@ -78,7 +78,14 @@ All AI functionalities are integrated into the Flask web application, providing 
 
 ## 📞 Contact
 
-For questions, support, or collaborations:
+## 📬 Get in Touch  
+<p align="center">
+  <a href="mailto:oagengmtlapele@gmail.com" title="Email"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/gmail.svg" alt="Email" width="40" height="40"/></a>
+  <a href="https://www.linkedin.com/in/oageng-motlapele-853387264/" title="LinkedIn"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/linkedin.svg" alt="LinkedIn" width="40" height="40"/></a>
+  <a href="https://github.com/oagengmotlapele" title="GitHub"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/github.svg" alt="GitHub" width="40" height="40"/></a>
+  <a href="https://twitter.com/yourusername" title="Twitter"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/twitter.svg" alt="Twitter" width="40" height="40"/></a>
+  <a href="https://facebook.com/yourusername" title="Facebook"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/facebook.svg" alt="Facebook" width="40" height="40"/></a>
+  <a href="https://instagram.com/yourusername" title="Instagram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/instagram.svg" alt="Instagram" width="40" height="40"/></a>
+  <a href="https://wa.me/26772693981" title="WhatsApp"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/whatsapp.svg" alt="WhatsApp" width="40" height="40"/></a>
+</p>
 
-* **Email:** [oagengmtlapele@gmail.com](mailto:oagengmtlapele@gmail.com)
-* **Phone:** +267 72693981

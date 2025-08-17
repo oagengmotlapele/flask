@@ -1,10 +1,13 @@
 import os
+
+import pkg_resources
 import requests
 from dotenv import load_dotenv
 from git import Repo
 
 class GitHubPusher:
     def __init__(self, project_path=None):
+        self.generate_requirements()
         load_dotenv()
         self.token = os.environ.get("GITHUB_TOKEN")
         if not self.token:
@@ -25,6 +28,20 @@ class GitHubPusher:
             raise Exception("❌ No internet connection. Aborting!")
 
         self.push_to_github()
+
+    def generate_requirements(self,file_path='requirements.txt'):
+        """
+        Generate a requirements.txt file with all installed packages
+        in the current environment.
+        """
+        installed_packages = pkg_resources.working_set
+        packages_list = sorted([f"{pkg.key}=={pkg.version}" for pkg in installed_packages])
+
+        with open(file_path, 'w') as f:
+            for package in packages_list:
+                f.write(package + '\n')
+
+        print(f"requirements.txt generated with {len(packages_list)} packages!")
 
     def has_internet(self, url="https://api.github.com"):
         try:

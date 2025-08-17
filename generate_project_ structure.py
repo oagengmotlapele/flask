@@ -1,10 +1,14 @@
 import os
 
-def create_project_structure(project_path):
+
+def create_project_structure():
     """
-    Generates a standard project structure at the given path.
+    Generates a standard project structure in the current working directory
+    and prints a visual tree, skipping 'venv' folder.
     """
-    # Define folder structure
+    project_path = os.getcwd()
+
+    # Folder structure
     folders = [
         "src",
         "templates",
@@ -15,7 +19,7 @@ def create_project_structure(project_path):
         "tests"
     ]
 
-    # Define starter files with some content
+    # Starter files with content
     files = {
         "README.md": "# Project Title\n\nAuthor: Oageng Motlapele",
         "src/__init__.py": "",
@@ -27,18 +31,30 @@ def create_project_structure(project_path):
 
     # Create folders
     for folder in folders:
-        path = os.path.join(project_path, folder)
-        os.makedirs(path, exist_ok=True)
-        print(f"Created folder: {path}")
+        os.makedirs(os.path.join(project_path, folder), exist_ok=True)
 
     # Create files
     for file_path, content in files.items():
-        path = os.path.join(project_path, file_path)
-        with open(path, "w") as f:
+        with open(os.path.join(project_path, file_path), "w") as f:
             f.write(content)
-        print(f"Created file: {path}")
 
-    print("\n✅ Project structure created successfully!")
+    print("✅ Project structure created successfully!\n")
+
+    # Function to print tree, skipping 'venv'
+    def print_tree(start_path, prefix=""):
+        contents = sorted(os.listdir(start_path))
+        contents = [c for c in contents if c != "venv"]  # Skip venv
+        for i, item in enumerate(contents):
+            path = os.path.join(start_path, item)
+            connector = "└── " if i == len(contents) - 1 else "├── "
+            print(prefix + connector + item)
+            if os.path.isdir(path):
+                extension = "    " if i == len(contents) - 1 else "│   "
+                print_tree(path, prefix + extension)
+
+    # Print tree
+    print(f"{os.path.basename(project_path)}/")
+    print_tree(project_path, "")
 
 # Example usage:
-# create_project_structure("/home/oagengmtlapele/Projects/MyNewProject")
+create_project_structure()

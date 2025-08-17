@@ -40,6 +40,7 @@ class GitHubPusher:
         with open(file_path, 'w') as f:
             for package in packages_list:
                 f.write(package + '\n')
+            f.close()
 
         print(f"requirements.txt generated with {len(packages_list)} packages!")
 

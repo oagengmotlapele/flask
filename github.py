@@ -7,7 +7,7 @@ from git import Repo
 
 class GitHubPusher:
     def __init__(self, project_path=None):
-        self.generate_requirements()
+        
         load_dotenv()
         self.token = os.environ.get("GITHUB_TOKEN")
         if not self.token:

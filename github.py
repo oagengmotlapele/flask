@@ -7,7 +7,7 @@ from git import Repo
 
 class GitHubPusher:
     def __init__(self, project_path=None):
-        
+        self.generate_requirements()
         load_dotenv()
         self.token = os.environ.get("GITHUB_TOKEN")
         if not self.token:
@@ -41,7 +41,7 @@ class GitHubPusher:
         # Save in the current working directory
         file_path = os.path.join(os.getcwd(), 'requirements.txt')
 
-        with open(file_path, 'w') as f:
+        with open("requirement.txt", 'w') as f:
             for package in packages_list:
                 f.write(package + '\n')
 

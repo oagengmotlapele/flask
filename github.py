@@ -36,7 +36,7 @@ class GitHubPusher:
         """
         installed_packages = pkg_resources.working_set
         packages_list = sorted([f"{pkg.key}=={pkg.version}" for pkg in installed_packages])
-
+        print(packages_list)
         with open(file_path, 'w') as f:
             for package in packages_list:
                 f.write(package + '\n')

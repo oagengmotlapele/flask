@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Contact Cards Manager</title>
+<style>
+  body{margin:0;padding:20px;font-family:Arial,sans-serif;background:#f5f7fa;}
+  #team1CardList{display:grid;gap:20px;grid-template-columns:1fr;}
+  @media(min-width:992px){#team1CardList{grid-template-columns:1fr 1fr}}
+  .team1Card{background:#fff;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);display:flex;flex-wrap:wrap;align-items:center;position:relative;padding:15px;width:100%;}
+  .team1Card img{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+  .team1Card-content{flex:1;margin-left:15px;display:flex;flex-direction:column;min-width:0;}
+  .team1Card-content h3{margin:0 0 5px;font-size:1.1em;}
+  .team1Card-content h4{margin:0 0 8px;color:#555;font-size:.95em;}
+  .team1Card-content p{margin:0 0 10px;color:#666;line-height:1.4;min-height:3em;}
+  .team1Card-footer{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid #eee;padding-top:8px;}
+  .team1Card-footer a{flex:1;text-align:center;color:#0073e6;text-decoration:none;font-size:0.9em;white-space:nowrap;}
+  .team1Card-footer a:hover{text-decoration:underline;}
+  @media(max-width:600px){
+    .team1Card{padding:12px;}
+    .team1Card img{width:60px;height:60px;}
+    .team1Card-content h3{font-size:1em;}
+    .team1Card-content h4{font-size:.9em;}
+  }
+</style>
+</head>
+<body>
+
+<div id="team1CardList"></div>
+
+<script type="application/json" id="initialData">{{ contacts|safe }}</script>
+
+<script>
+(function(){
+  const container = document.getElementById('team1CardList');
+  const dataEl = document.getElementById('initialData');
+  const contacts = dataEl ? JSON.parse(dataEl.textContent) : [];
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, c => ({
+      '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+    })[c]);
+  }
+
+  function renderCards(items){
+    container.innerHTML = '';
+    items.forEach(d => {
+      const div = document.createElement('div');
+      div.className = 'team1Card';
+
+      const img = document.createElement('img');
+      img.src = d.image || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNTAiIGN5PSI0MCIgcj0iMjUiIGZpbGw9IiNjY2MiLz48dGV4dCB4PSI1MCIgeT0iNTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIHRleHQtcmFuZ2U9Im1pZGRsZSIgZmlsbD0iIzY2NiI+VXNlcjwvdGV4dD48L3N2Zz4=';
+      div.appendChild(img);
+
+      const content = document.createElement('div');
+      content.className = 'team1Card-content';
+      content.innerHTML = `
+        <h3>${escapeHtml(d.fullName || '')}</h3>
+        <h4>${escapeHtml(d.role || '')}</h4>
+        <p>${escapeHtml(d.description || '')}</p>
+        <div class="team1Card-footer">
+          <a href="${escapeHtml(d.facebook || '#')}" target="_blank" rel="noopener">Facebook</a>
+          <a href="${escapeHtml(d.linkedin || '#')}" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="${escapeHtml(d.twitter || '#')}" target="_blank" rel="noopener">Twitter</a>
+          <a href="${escapeHtml(d.whatsapp || '#')}" target="_blank" rel="noopener">WhatsApp</a>
+        </div>`;
+      div.appendChild(content);
+
+      container.appendChild(div);
+    });
+  }
+
+  renderCards(contacts);
+})();
+</script>
+
+</body>
+</html>

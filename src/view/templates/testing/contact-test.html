@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive CRUD Tabs (CSS Only)</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    /*
+     * General body and container styling
+     */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f4f6f8;
+        color: #333;
+    }
+
+    .tab-container {
+        width: 90%;
+        max-width: 900px;
+        margin: 40px auto;
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /*
+     * We use a hidden checkbox to toggle the menu on mobile.
+     * The labels will act as our visible buttons/toggles.
+     */
+    .hidden-input {
+        display: none;
+    }
+
+    /*
+     * Menu toggle for mobile screens. This label is linked to the hidden checkbox.
+     */
+    .menu-toggle {
+        display: none;
+        background: #2d3e50;
+        color: white;
+        padding: 14px;
+        cursor: pointer;
+        text-align: left;
+    }
+
+    .tab-header {
+        display: flex;
+        flex-wrap: wrap;
+        background: #2d3e50;
+    }
+
+    /*
+     * We replace the buttons with labels linked to hidden radio buttons.
+     */
+    .tab-header label {
+        flex: 1;
+        padding: 14px;
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color: #ccc;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .tab-header label i {
+        margin-right: 8px;
+    }
+
+    .tab-header label:hover {
+        background: #1f2a38;
+        color: #fff;
+    }
+
+    /*
+     * The tab is marked as "active" when its corresponding radio button is checked.
+     */
+    #add-tab:checked ~ .tab-header label[for="add-tab"],
+    #update-tab:checked ~ .tab-header label[for="update-tab"],
+    #delete-tab:checked ~ .tab-header label[for="delete-tab"],
+    #view-tab:checked ~ .tab-header label[for="view-tab"] {
+        background: #4CAF50;
+        color: white;
+    }
+
+    /*
+     * All tab content is hidden by default.
+     */
+    .tab-content {
+        padding: 20px;
+        display: none;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    /*
+     * The selected content is displayed when its corresponding radio button is checked.
+     */
+    #add-tab:checked ~ #add-content,
+    #update-tab:checked ~ #update-content,
+    #delete-tab:checked ~ #delete-content,
+    #view-tab:checked ~ #view-content {
+        display: block;
+    }
+
+    /*
+     * Responsive behavior for the hamburger menu
+     */
+    @media (max-width: 600px) {
+        /* On small screens, display the menu toggle label */
+        .menu-toggle {
+            display: block;
+        }
+
+        /* By default, hide the tab header on mobile */
+        .tab-header {
+            display: none;
+            flex-direction: column;
+        }
+
+        .tab-header label {
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        /* When the hidden checkbox is checked, show the tab header */
+        #menu-toggle-checkbox:checked ~ .tab-header {
+            display: flex;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="tab-container">
+    <!-- Hidden checkbox to toggle the menu on mobile -->
+    <input type="checkbox" id="menu-toggle-checkbox" class="hidden-input">
+    <label class="menu-toggle" for="menu-toggle-checkbox"><i class="fa fa-bars"></i> Menu</label>
+
+    <!-- Hidden radio buttons for tab switching -->
+    <input type="radio" name="tab-group" id="add-tab" class="hidden-input" checked>
+    <input type="radio" name="tab-group" id="update-tab" class="hidden-input">
+    <input type="radio" name="tab-group" id="delete-tab" class="hidden-input">
+    <input type="radio" name="tab-group" id="view-tab" class="hidden-input">
+
+    <div class="tab-header">
+        <label for="add-tab"><i class="fa fa-plus"></i>Add</label>
+        <label for="update-tab"><i class="fa fa-edit"></i>Update</label>
+        <label for="delete-tab"><i class="fa fa-trash"></i>Delete</label>
+        <label for="view-tab"><i class="fa fa-eye"></i>View</label>
+    </div>
+
+    <!-- Tab content sections. Note the new IDs. -->
+    <div id="add-content" class="tab-content">
+        <h2>Add Record</h2>
+        <p>Form to add new record goes here.</p>
+    </div>
+
+    <div id="update-content" class="tab-content">
+        <h2>Update Record</h2>
+        <p>Form to update existing record goes here.</p>
+    </div>
+
+    <div id="delete-content" class="tab-content">
+        <h2>Delete Record</h2>
+        <p>Form or list to delete a record goes here.</p>
+    </div>
+
+    <div id="view-content" class="tab-content">
+        <h2>View Records</h2>
+        <p>Table or list of records goes here.</p>
+    </div>
+</div>
+
+</body>
+</html>

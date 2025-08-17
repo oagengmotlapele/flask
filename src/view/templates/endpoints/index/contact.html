@@ -1,0 +1,88 @@
+{% extends layout %}
+{% block title %}Our Contacts{% endblock %}
+{% block header %}
+    {% include "include/header/header1.html" %}
+{% endblock %}
+{% block nav %}
+    {% include "include/nav/nav1.html" %}
+{% endblock %}
+{% block section %}
+
+  <div id="contactCards"></div>
+
+  <div class="contact_card_inner1" style="">
+    <button class="addContactBtnCard background-green" data-popup-id="contact-card-form-popup">
+      + Add Contact Method
+    </button>
+  </div>
+
+{% endblock %}
+{% block aside %}
+
+
+{% endblock %}
+{% block footer %}
+ <p>&copy; 2025 Ministry of Youth and Gender Affairs, Botswana. All rights reserved.</p>
+{% endblock %}
+
+{% block popups %}
+    <!-- Popup Overlay and Popup -->
+    <div id="overlay" class="display-none">
+    <div class="popup display-none" id="contact-card-form-popup" >
+        <button id="closeModalBtn" aria-label="Close modal">&times;</button>
+      <h2 id="modalTitle">Add Contact Method</h2>
+      <form id="contactForm" novalidate>
+        <div>
+          <label for="contactType">Contact Type</label>
+          <select id="contactType" required>
+            <option value="" disabled selected>Select contact type</option>
+            <option value="phone">Phone</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="email">Email</option>
+            <option value="facebook">Facebook</option>
+            <option value="twitter">Twitter</option>
+            <option value="instagram">Instagram</option>
+            <option value="linkedin">LinkedIn</option>
+            <option value="website">Website</option>
+            <option value="location">Location</option>
+            <option value="postal">Postal Address</option>
+          </select>
+        </div>
+
+        <div id="inputContainer">
+          <label for="contactValue" id="valueLabel">Contact Details</label>
+          <input
+            id="contactValue"
+            type="text"
+            placeholder="Enter contact details"
+            required
+            autocomplete="off"
+          />
+          <input
+            id="contactUrl"
+            type="url"
+            placeholder="Enter URL"
+            style="display:none"
+            autocomplete="off"
+          />
+        </div>
+
+        <div id="modalButtons">
+          <button type="submit" id="saveBtn">Save</button>
+          <button type="button" id="cancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="popup display-none" id="service-popup" >
+        <button class="close-popup-btn">Close</button>
+        <p>This is the services popup</p>
+    </div>
+
+    <div class="popup display-none" id="contact-popup" >
+        <button class="close-popup-btn">Close</button>
+        <p>This is the contact popup</p>
+    </div>
+</div>
+
+{% endblock %}

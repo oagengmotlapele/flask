@@ -1,0 +1,268 @@
+
+
+
+    #contactCards {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    @media (min-width: 768px) {
+      #contactCards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .contact-info i.fas.fa-phone { color: #25a162; }           /* Phone - nice green */
+.contact-info i.fab.fa-whatsapp { color: #25D366; }        /* WhatsApp green */
+.contact-info i.fas.fa-envelope { color: #D44638; }        /* Email red (Gmail style) */
+.contact-info i.fab.fa-facebook-f { color: #1877F2; }      /* Facebook blue */
+.contact-info i.fab.fa-twitter { color: #1DA1F2; }         /* Twitter blue */
+.contact-info i.fab.fa-instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} /* Instagram gradient */
+.contact-info i.fab.fa-linkedin-in { color: #0A66C2; }      /* LinkedIn blue */
+.contact-info i.fas.fa-globe { color: #4285F4; }            /* Website - Google blue */
+.contact-info i.fas.fa-map-marker-alt { color: #db4437; }   /* Location - Google red */
+.contact-info i.fas.fa-mail-bulk { color: #34a853; }
+
+    .contact-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: default;
+    }
+
+    .contact-card[data-phone-card="false"] {
+      /* Hide all but first phone/email/whatsapp on small devices */
+      display: none;
+    }
+
+    @media (min-width: 600px) {
+      .contact-card[data-phone-card="false"] {
+        display: flex;
+      }
+    }
+
+    .contact-info,
+    .contact-info a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1em;
+      color: #333;
+      text-decoration: none;
+      flex: 1;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+
+    /* Remove underline and add hover background + color change */
+    .contact-card:hover,
+    .contact-info:hover {
+      background-color: #0073e6;
+      color: white;
+      cursor: pointer;
+    }
+
+    .contact-card:hover i,
+    .contact-info:hover i {
+      color: white;
+    }
+
+    /* Icon style */
+    .contact-info i {
+      font-size: 1.5em;
+      min-width: 28px;
+      text-align: center;
+      color: #0073e6;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+
+    /* Action buttons */
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .actions button {
+      border: none;
+      background: #0073e6;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .actions button:hover {
+      background-color: #005bb5;
+    }
+
+    /* Toast */
+    #toast {
+      visibility: hidden;
+      min-width: 180px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 12px 20px;
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1em;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.4s ease, visibility 0.4s;
+    }
+
+    #toast.show {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Modal overlay */
+    #modalOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #modalOverlay.active {
+      display: flex;
+    }
+
+    /* Modal content */
+    #modal {
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 6px 15px rgb(0 0 0 / 0.3);
+      position: relative;
+    }
+
+    #modal h2 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-weight: 700;
+      color: #0073e6;
+      user-select: none;
+    }
+
+    #modal form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      user-select: none;
+      color: #333;
+    }
+
+    select,
+    input[type="text"],
+    input[type="url"],
+    input[type="email"] {
+      padding: 10px 12px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    select:focus,
+    input[type="text"]:focus,
+    input[type="url"]:focus,
+    input[type="email"]:focus {
+      border-color: #0073e6;
+      box-shadow: 0 0 6px #0073e6aa;
+    }
+
+    #modalButtons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    #modalButtons button {
+      padding: 10px 18px;
+      font-size: 1em;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    #saveBtn {
+      background-color: #0073e6;
+      color: white;
+    }
+
+    #saveBtn:hover {
+      background-color: #005bb5;
+    }
+
+    #cancelBtn {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    #cancelBtn:hover {
+      background-color: #aaa;
+    }
+
+    /* Close modal button */
+    #closeModalBtn {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: transparent;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #777;
+      user-select: none;
+    }
+
+    #closeModalBtn:hover {
+      color: #0073e6;
+    }
+    .contact_card_inner1{
+    text-align:center; margin-top: 20px;
+    }
+    .addContactBtnCard{
+    padding: 12px 28px;
+      font-size: 1.1em;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }

@@ -1,0 +1,44 @@
+{% for card in card1 %}
+<div class="card1 {{ responsive_card1 }}" data-card-index="{{ loop.index0 }}">
+    <div class="inner-card">
+        <div class="img-container">
+            <div class="svg-container">
+                <svg viewBox="0 0 100 150" preserveAspectRatio="xMidYMid meet"
+                     xmlns="http://www.w3.org/2000/svg"
+                     >
+                    <text  x="50%" y="50%">
+                        {{ card.title }}
+                    </text>
+                </svg>
+            </div>
+        </div>
+
+        <div class="card1-details">
+            <h2>{{ card.title }}</h2>
+
+            {% if user == 'admin' %}
+            <div class="admin-actions mb-10">
+                <button class="card-btn" data-action="update_title">Update Title</button>
+                <button class="card-btn" data-action="delete_card">Delete Card</button>
+            </div>
+            {% endif %}
+
+            <ul>
+                {% for point in card.points %}
+                <li data-point-index="{{ loop.index0 }}">
+                    <div class="point-text">{{ point | safe }}</div>
+
+                    {% if user == 'admin' %}
+                    <div class="point-actions mt-6 mb-12">
+                        <button class="point-btn" data-action="update_point">Update</button>
+                        <button class="point-btn" data-action="delete_point">Delete</button>
+                        <button class="point-btn" data-action="add_point_after">Add After</button>
+                    </div>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endfor %}

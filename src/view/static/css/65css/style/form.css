@@ -1,0 +1,259 @@
+form {
+margin:30px;
+            max-width: 90%;
+            margin: 0 auto;
+            background: var(--color-light);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex-wrap;
+
+        }
+
+        /* Broken dashed line above inputs */
+        .broken-line {
+            border-top: 2px dashed var(--color-default);
+            margin: 0 0 20px 0;
+            position: relative;
+            transition: border-color 0.3s ease;
+            width:100%;
+        }
+        .broken-line.invalid {
+            border-color: var(--color-error);
+        }
+        .broken-line.valid {
+            border-color: var(--color-pass);
+        }
+        .broken-line-label {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            padding: 0 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--color-default);
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+        .broken-line.invalid .broken-line-label {
+            color: var(--color-error);
+        }
+        .broken-line.valid .broken-line-label {
+            color: var(--color-pass);
+        }
+
+        .input-floating-container {
+            position: relative;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        .input-input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-left-icon {
+            position: absolute;
+            left: 10px;
+            font-size: 18px;
+            color: var(--color-default);
+            pointer-events: none;
+        }
+
+        input.floating-input,
+        input[type="date"],
+        input[type="color"] {
+            width: 100%;
+            padding: 10px 40px 10px 40px;
+            font-size: 14px;
+            border: 1.5px solid var(--color-default);
+            border-radius: 6px;
+            outline: none;
+            color: var(--color-dark);
+            font-weight:bold;
+            background: #fff;
+            box-sizing: border-box;
+            transition: border-color 0.3s, color 0.3s;
+        }
+        input.floating-input:focus,
+        input[type="date"]:focus,
+        input[type="color"]:focus {
+            border-color: var(--color-default);
+        }
+
+        label.floating-label {
+            position: absolute;
+            left: 40px;
+            top: 12px;
+            background: #fff;
+            padding: 0 6px;
+            font-size: 14px;
+            color: #3d85d8;
+            pointer-events: none;
+            transition: 0.2s ease all;
+            user-select: none;
+        }
+        input.floating-input:focus + label.floating-label,
+        input.floating-input:not(:placeholder-shown) + label.floating-label,
+        input[type="date"]:focus + label.floating-label,
+        input[type="date"]:not(:placeholder-shown) + label.floating-label,
+        input[type="color"]:focus + label.floating-label,
+        input[type="color"]:not(:placeholder-shown) + label.floating-label {
+            top: -8px;
+            font-size: 12px;
+            color: var(--color-dark);
+            font-weight:bold;
+        }
+
+        /* Radio and checkbox groups styling */
+        .options-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding-left: 40px;
+            margin-top: 6px;
+        }
+        .options-group label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            user-select: none;
+        }
+        /* Fix input styles inside label */
+        .options-group input[type="radio"],
+        .options-group input[type="checkbox"] {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            color: var(--color-dark);
+            font-weight:bold;
+        }
+
+        .input-error-icon {
+            position: absolute;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--color-error);
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+        .input-error-icon.valid {
+            color: var(--color-pass);
+
+        }
+
+        .criteria-panel {
+            display: none;
+            flex-direction: column;
+            background-color: var(--color-default);
+            border: 1px solid #ffeeba;
+            border-radius: 6px;
+            padding: 10px 15px;
+            font-size: 13px;
+            color: #555;
+            margin-top: 10px;
+            user-select: none;
+        }
+        .criteria-panel.show {
+            display: flex;
+        }
+
+        .criteria-point {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .criteria-point-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-error);
+            color: var(--color-default);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            font-size: 14px;
+            user-select: none;
+        }
+        .criteria-point-icon.valid {
+            background: var(--color-pass);
+        }
+        .criteria-point-icon.invalid {
+            background: var(--color-error);
+        }
+
+form .h {
+   justify-content:center;
+   text-align:center;
+}
+
+.gradient-text {
+  display: inline-block;
+  background: linear-gradient(
+    190deg,
+    var(--color-dark) 0%,
+    var(--color-pass) 50%,
+    var(--color-error) 100%
+  );
+  background-size: 200% 200%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  animation: gradientRandom 12s steps(4, end) infinite;
+}
+
+@keyframes gradientRandom {
+  0% {
+    background-image: linear-gradient(
+      190deg,
+      var(--color-dark) 0%,
+      var(--color-pass) 50%,
+      var(--color-error) 100%
+    );
+  }
+  25% {
+    background-image: linear-gradient(
+      190deg,
+      var(--color-pass) 0%,
+      var(--color-error) 50%,
+      var(--color-default) 100%
+    );
+  }
+  50% {
+    background-image: linear-gradient(
+      190deg,
+      var(--color-error) 0%,
+      var(--color-default) 50%,
+      var(--color-dark) 100%
+    );
+  }
+  75% {
+    background-image: linear-gradient(
+      190deg,
+      var(--color-default) 0%,
+      var(--color-dark) 50%,
+      var(--color-pass) 100%
+    );
+  }
+  100% {
+    background-image: linear-gradient(
+      190deg,
+      var(--color-dark) 0%,
+      var(--color-pass) 50%,
+      var(--color-error) 100%
+    );
+  }
+}
+
+
+
+

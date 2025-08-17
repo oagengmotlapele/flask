@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    {% for css_file in css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename=css_file) }}">
+    {% endfor %}
+</head>
+<body>
+<div class="row">
+    <header  class="bg-primary text-white text-center py-3 col-12">header</header>
+    <nav     class="bg-danger text-white text-center py-3 col-12">nav</nav>
+    <aside   class="bg-dark      text-white text-center py-3 col-4  col-sm-12 col-md-4  col-lg-4">aside</aside>
+    <section class="bg-warning   text-white text-center py-3 col-8  col-sm-12 col-md-8  col-lg-8">section</section>
+    <footer  class="bg-secondary text-white text-center py-3 col-12 col-sm-12 col-md-12 col-lg-12">Footer</footer>
+</div>
+</body>
+</html>

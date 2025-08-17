@@ -1,0 +1,28 @@
+/*
+Programmer Name : Oageng  Motlapele
+Last Update date: June 1 2025 1842
+Functionality : Grid Layout
+*/
+.grid {
+
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box; /* Ensures padding is included in width/height */
+}
+
+.grid > * {
+    flex-grow: 0;
+    flex-shrink: 0;
+    box-sizing: border-box; /* Ensures padding is included in width */
+
+    margin: 0.5%;
+
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    /* Avoid margin here if you want tight layout control */
+}
+

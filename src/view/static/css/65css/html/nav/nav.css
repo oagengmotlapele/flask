@@ -1,0 +1,295 @@
+/* Scope everything inside .nav1 */
+.nav1 {
+    height: 74px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav1 > .center-nav a,
+.nav1 > .left-nav a,
+.nav1 > .right-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav1 > .center-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav1 > .center-nav .menu,
+.nav1 > .right-nav .right-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    background:var(--color-default);
+}
+
+.nav1 li {
+    position: relative;
+}
+
+
+.nav1 .center-nav ul li a{color:var(--color-light);}
+.nav1 .right-nav ul li a{color:var(--color-light);}
+
+
+.nav1 .center-nav ul li :hover{color:var(--color-pass);}
+.nav1 .right-nav ul li :hover{color:var(--color-pass);}
+
+.nav1 .center-nav ul li ul{background-color: var(--color-light);}
+.nav1 .center-nav ul li ul li a{color: var(--color-default);}
+
+.nav1 .right-nav ul li ul{background-color: var(--color-light);}
+.nav1 .right-nav ul li ul li a{color: var(--color-default);}
+
+.nav1 .center-nav ul li ul li ul{background-color: var(--color-default);}
+.nav1 .center-nav ul li ul li ul li a{color: var(--color-light);}
+
+.nav1 .right-nav ul li ul li ul{background-color: var(--color-default);}
+.nav1 .right-nav ul li ul li ul li a{color: var(--color-light);}
+
+.nav1 a {
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    white-space: nowrap;
+}
+
+
+
+.nav1 .sub-menu {
+    list-style: none;
+}
+
+.nav1 ul ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    min-width: 160px;
+    z-index: 9999;
+
+}
+
+.nav1 li.show > ul {
+    display: flex;
+}
+
+.nav1 ul ul ul {
+    top: 0;
+    left: 100%;
+
+}
+
+.nav1 ul ul ul ul {
+    left: 100%;
+}
+
+.nav1 ul li ul li a {
+    padding: 10px 15px;
+}
+
+
+
+.nav1 .hamburger {
+    display: none;
+}
+
+/* Responsive */
+/* MOBILE: max 480px */
+@media (max-width: 480px) {
+
+    .nav1.nav1-mobile > .center-nav,
+    .nav1.nav1-mobile > .right-nav {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+
+    }
+
+    .nav1.nav1-mobile .menu,
+    .nav1.nav1-mobile .right-menu {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav1.nav1-mobile .menu a,
+    .nav1.nav1-mobile .right-menu a {
+        padding: 10px;
+    }
+
+    .nav1.nav1-mobile.show > .center-nav,
+    .nav1.nav1-mobile.show > .right-nav {
+        display: flex;
+    }
+    .nav1.nav1-mobile .hamburger {
+        display: block;
+        border: none;
+        padding: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .nav1.nav1-mobile ul ul,
+    .nav1.nav1-mobile ul ul ul {
+        position: relative;
+        top: auto;
+        left: auto;
+    }
+
+    .nav1.nav1-mobile > .center-nav a,
+    .nav1.nav1-mobile > .left-nav a,
+    .nav1.nav1-mobile > .right-nav a {
+        flex-direction: row;
+        gap:8px;
+    }
+}
+
+/* TABLETS: 481px - 1024px */
+@media (min-width: 481px) and (max-width: 1024px) {
+    .nav1.nav1-tablets > .center-nav,
+    .nav1.nav1-tablets > .right-nav {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+    }
+
+    .nav1.nav1-tablets .menu,
+    .nav1.nav1-tablets .right-menu {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav1.nav1-tablets .menu a,
+    .nav1.nav1-tablets .right-menu a {
+        padding: 10px;
+    }
+
+    .nav1.nav1-tablets.show > .center-nav,
+    .nav1.nav1-tablets.show > .right-nav {
+        display: flex;
+    }
+
+    .nav1.nav1-tablets .hamburger {
+        display: block;
+        border: none;
+        padding: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .nav1.nav1-tablets ul ul,
+    .nav1.nav1-tablets ul ul ul {
+        position: relative;
+        top: auto;
+        left: auto;
+    }
+    .nav1.nav1-tablets > .center-nav a,
+    .nav1.nav1-tablets > .left-nav a,
+    .nav1.nav1-tablets > .right-nav a {
+        flex-direction: row;
+        gap:8px;
+    }
+}
+
+/* LAPTOPS: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+
+    .nav1.nav1-laptops > .center-nav,
+    .nav1.nav1-laptops > .right-nav {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+    }
+
+    .nav1.nav1-laptops .menu,
+    .nav1.nav1-laptops .right-menu {
+        flex-direction: column;
+        width: 100%;
+    }
+    .nav1.nav1-laptops .menu a,
+    .nav1.nav1-laptops .right-menu a {
+        display:block;
+        padding: 10px;
+        justify-content:center;
+
+    }
+
+    .nav1.nav1-laptops.show > .center-nav,
+    .nav1.nav1-laptops.show > .right-nav {
+        display: flex;
+    }
+
+    .nav1.nav1-laptops .hamburger {
+        display: block;
+        border: none;
+        padding: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .nav1.nav1-laptops ul ul,
+    .nav1.nav1-laptops ul ul ul {
+        position: relative;
+        top: auto;
+        left: auto;
+    }
+}
+
+/* TVS: min-width 1441px */
+@media (min-width: 1441px) {
+    .nav1.nav1-tvs > .center-nav,
+    .nav1.nav1-tvs > .right-nav {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+    }
+
+    .nav1.nav1-tvs .menu,
+    .nav1.nav1-tvs .right-menu {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav1.nav1-tvs .menu a,
+    .nav1.nav1-tvs .right-menu a {
+        padding: 10px;
+    }
+
+    .nav1.nav1-tvs.show > .center-nav,
+    .nav1.nav1-tvs.show > .right-nav {
+        display: flex;
+    }
+
+    .nav1.nav1-tvs .hamburger {
+        display: block;
+        border: none;
+        padding: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .nav1.nav1-tvs ul ul,
+    .nav1.nav1-tvs ul ul ul {
+        position: relative;
+        top: auto;
+        left: auto;
+    }
+}
+
+
+

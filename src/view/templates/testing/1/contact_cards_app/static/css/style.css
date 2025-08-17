@@ -1,0 +1,126 @@
+/* Grid container for cards */
+.contact-grid {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  grid-template-columns: 1fr;
+}
+
+@media(min-width: 992px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Card style */
+.contact-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-card:hover {
+  background-color: #f0f7ff;
+  text-decoration: none;
+}
+
+/* Icon container */
+.contact-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+/* Text container */
+.contact-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: #0073e6;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.btn-secondary {
+  background-color: #ccc;
+  border: none;
+  color: #333;
+  padding: 10px 18px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #555;
+}
+
+.modal label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.modal input, .modal select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}

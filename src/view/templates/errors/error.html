@@ -1,0 +1,11 @@
+<!-- templates/errors/error.html -->
+{% extends "errors/base.html" %}
+
+{% block title %}Page Not Found{% endblock %}
+
+{% block content %}
+    <div class="bg-danger">{{ error_code }}</div>
+    <div class="error-message">{{ error_message }}</div>
+    <p class="error-description">{{ error_description }}</p>
+    <a href="/">Go back to home</a>
+{% endblock %}

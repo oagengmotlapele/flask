@@ -1,0 +1,294 @@
+
+  {% for i in form1 %}
+    {% if i == 'Username' %}
+    <div class="{{ responsive }}">
+      <div class="broken-line invalid" id="broken-username">
+        <span class="broken-line-label invalid">Username</span>
+      </div>
+      <div class="input-floating-container">
+        <div class="input-input-group">
+          <i class="fas fa-user input-left-icon"></i>
+          <input
+            name="username" 
+            type="text"
+            id="username-input"
+            class="floating-input"
+            placeholder=" "
+            autocomplete="off"
+            required
+          />
+          <label for="username-input" class="floating-label">Username</label>
+          <i class="input-error-icon fas fa-times-circle" id="username-error-icon" title="Username validation error"></i>
+        </div>
+        <div class="criteria-panel" id="username-criteria-panel" aria-live="polite">
+          <span class="input-title">Username Criteria</span>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="username-length-icon">
+              <i class="fas fa-times invalid"></i>
+            </div>
+            <span>3 to 15 characters</span>
+          </div>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="username-validchars-icon">
+              <i class="fas fa-times invalid"></i>
+            </div>
+            <span>Only letters and numbers (a-z, A-Z, 0-9)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% if i == 'First Name' %}
+    <div class="{{ responsive }}">
+      <div class="broken-line invalid" id="broken-first-name">
+        <span class="broken-line-label invalid">First Name</span>
+      </div>
+      <div class="input-floating-container">
+        <div class="input-input-group">
+          <i class="fas fa-user input-left-icon"></i>
+          <input
+            name="first-name" 
+            type="text"
+            id="first-name-input"
+            class="floating-input"
+            placeholder=" "
+            autocomplete="off"
+            required
+          />
+          <label for="first-name-input" class="floating-label">First Name</label>
+          <i class="input-error-icon fas fa-times-circle" id="first-name-error-icon" title="First Name validation error"></i>
+        </div>
+        <div class="criteria-panel" id="first-name-criteria-panel" aria-live="polite">
+          <span class="input-title">First Name Criteria</span>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="first-name-length-icon">
+              <i class="fas fa-times invalid"></i>
+            </div>
+            <span>3 to 15 characters</span>
+          </div>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="first-name-validchars-icon">
+              <i class="fas fa-times invalid"></i>
+            </div>
+            <span>Only letters and numbers (a-z, A-Z, 0-9)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% if i == 'Password' %}
+    <div class="{{ responsive }}">
+      <div class="broken-line invalid" id="broken-password">
+        <span class="broken-line-label invalid">Password</span>
+      </div>
+      <div class="input-floating-container">
+        <div class="input-input-group">
+          <i class="fas fa-lock input-left-icon"></i>
+          <input
+            name="password" 
+            type="password"
+            id="password-input"
+            class="floating-input"
+            placeholder=" "
+            autocomplete="off"
+            required
+          />
+          <label for="password-input" class="floating-label">Password</label>
+          <i class="input-error-icon fas fa-times-circle" id="password-error-icon" title="Password validation error"></i>
+        </div>
+        <div class="criteria-panel" id="password-criteria-panel" aria-live="polite">
+          <span class="input-title">Password Criteria</span>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="password-length-icon">
+              <i class="fas fa-times invalid"></i>
+            </div>
+            <span>At least 8 characters</span>
+          </div>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="password-uppercase-icon">
+              <i class="fas fa-times invalid"></i>
+            </div>
+            <span>At least 1 uppercase letter</span>
+          </div>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="password-lowercase-icon">
+              <i class="fas fa-times invalid"></i>
+            </div>
+            <span>At least 1 lowercase letter</span>
+          </div>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="password-special-icon">
+              <i class="fas fa-times invalid"></i>
+            </div>
+            <span>At least 1 special character (!@#$%^&*)</span>
+          </div>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="password-number-icon">
+              <i class="fas fa-times invalid"></i>
+            </div>
+            <span>At least 1 digit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% if i == 'Confirm Password' %}
+    <div class="{{ responsive }}">
+      <div class="broken-line invalid" id="broken-confirm-password">
+        <span class="broken-line-label invalid">Confirm Password</span>
+      </div>
+      <div class="input-floating-container">
+        <div class="input-input-group">
+          <i class="fas fa-lock input-left-icon"></i>
+          <input
+            name="confirm-password" 
+            type="password"
+            id="confirm-password-input"
+            class="floating-input"
+            placeholder=" "
+            autocomplete="off"
+            required
+          />
+          <label for="confirm-password-input" class="floating-label">Confirm Password</label>
+          <i class="input-error-icon fas fa-times-circle" id="confirm-password-error-icon" title="Confirm Password validation error"></i>
+        </div>
+        <div class="criteria-panel" id="confirm-password-criteria-panel" aria-live="polite">
+          <span class="input-title">Confirm Password Criteria</span>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="confirm-password-match-icon">
+              <i class="fas fa-times invalid"></i>
+            </div>
+            <span>Passwords must match</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% if i == 'Date of Birth' %}
+    <div class="{{ responsive }}">
+      <div class="broken-line invalid" id="broken-date-of-birth">
+        <span class="broken-line-label invalid">Date of Birth</span>
+      </div>
+      <div class="input-floating-container">
+        <div class="input-input-group">
+          <i class="fas fa-calendar-alt input-left-icon"></i>
+          <input
+            name="date-of-birth" 
+            type="date"
+            id="date-of-birth-input"
+            class="floating-input"
+            placeholder=" "
+            autocomplete="off"
+            required
+          />
+          <label for="date-of-birth-input" class="floating-label">Date of Birth</label>
+          <i class="input-error-icon fas fa-times-circle" id="date-of-birth-error-icon" title="Date of Birth validation error"></i>
+        </div>
+        <div class="criteria-panel" id="date-of-birth-criteria-panel" aria-live="polite">
+          <span class="input-title">Date of Birth Criteria</span>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="date-of-birth-selected-icon">
+              <i class="fas fa-times invalid"></i>
+            </div>
+            <span>Date must be selected</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% if i == 'Gender' %}
+    <div class="{{ responsive }}">
+      <div class="broken-line" id="broken-gender">
+        <span class="broken-line-label">Gender</span>
+      </div>
+      <div class="input-floating-container">
+        <div class="input-input-group" style="padding-left: 40px;">
+          <div class="options-group" role="radiogroup" aria-labelledby="broken-gender">
+            <label><input type="radio" name="gender" value="male" /> Male</label>
+            <label><input type="radio" name="gender" value="female" /> Female</label>
+            <label><input type="radio" name="gender" value="other" /> Other</label>
+          </div>
+          <i class="input-error-icon fas fa-exclamation-circle invalid" id="gender-error-icon" title="Select your gender"></i>
+        </div>
+        <div class="criteria-panel" id="gender-criteria-panel" aria-live="polite">
+          <span class="input-title">Gender Criteria</span>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="gender-selected-icon">
+              <i class="fas fa-times"></i>
+            </div>
+            <span>You must select a gender</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% if i == 'Interest' %}
+    <div class="{{ responsive }}">
+      <div class="broken-line" id="broken-interest">
+        <span class="broken-line-label">Interest</span>
+      </div>
+      <div class="input-floating-container">
+        <div class="input-input-group padding-left-4" >
+          <div class="options-group" role="group" aria-labelledby="broken-interest">
+            <label><input type="checkbox" name="interest" value="sports" /> Sports</label>
+            <label><input type="checkbox" name="interest" value="music" /> Music</label>
+            <label><input type="checkbox" name="interest" value="movies" /> Movies</label>
+            <label><input type="checkbox" name="interest" value="books" /> Books</label>
+          </div>
+          <i class="input-error-icon fas fa-times-circle" id="interest-error-icon" title="Select your interest"></i>
+        </div>
+        <div class="criteria-panel" id="interest-criteria-panel" aria-live="polite">
+          <span class="input-title">Interest Criteria</span>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="interest-selected-icon">
+              <i class="fas fa-times"></i>
+            </div>
+            <span>You must select at least one interest</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% if i == 'Favorite Color' %}
+    <div class="{{ responsive }}">
+      <div class="broken-line invalid" id="broken-favorite-color">
+        <span class="broken-line-label invalid">Favorite Color</span>
+      </div>
+      <div class="input-floating-container">
+        <div class="input-input-group">
+          <i class="fas fa-palette input-left-icon"></i>
+          <input
+            name="favorite-color" 
+            type="color"
+            id="favorite-color-input"
+            class="floating-input"
+            placeholder=" "
+            autocomplete="off"
+            required
+          />
+          <label for="favorite-color-input" class="floating-label">Favorite Color</label>
+          <i class="input-error-icon fas fa-times-circle" id="favorite-color-error-icon" title="Favorite Color validation error"></i>
+        </div>
+        <div class="criteria-panel" id="favorite-color-criteria-panel" aria-live="polite">
+          <span class="input-title">Favorite Color Criteria</span>
+          <div class="criteria-point">
+            <div class="criteria-point-icon" id="favorite-color-picked-icon">
+              <i class="fas fa-times invalid"></i>
+            </div>
+            <span>You must pick a color</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% if i == 'Login Button' %}
+    <div class="{{ responsive }}">
+      <div class="broken-line" id="broken-login-button">
+        <span class="broken-line-label">Login Button</span>
+      </div>
+      <div class="input-floating-container">
+        <input type="button" id="login-button-input" class="floating-input" required />
+      </div>
+    </div>
+    {% endif %}
+  {% endfor %}

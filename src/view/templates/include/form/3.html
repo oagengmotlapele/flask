@@ -1,0 +1,23 @@
+{% for i in form1 %}
+     <div class="{{ responsive }}">
+      <div class="broken-line invalid" id="broken-{{ i }}">
+        <span class="broken-line-label invalid">{{ i }}</span>
+      </div>
+      <div class="input-floating-container">
+        <div class="input-input-group">
+          <i class="fas fa-user input-left-icon"></i>
+          <input
+            name="{{ i }}"
+            type="{{ type }}"
+            id="username-input"
+            class="floating-input"
+            placeholder=" "
+            autocomplete="off"
+            required
+          />
+          <label for="username-input" class="floating-label">{{ i }}</label>
+          <i class="input-error-icon fas fa-times-circle" id="username-error-icon" title="Username validation error"></i>
+        </div>
+      </div>
+    </div>
+{% endfor %}

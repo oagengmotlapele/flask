@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    {% for css_file in css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename=css_file) }}">
+    {% endfor %}
+</head>
+<body>
+<div class="row">
+    <header  class="bg-primary text-white text-center py-3 col-12">
+        <% block header %} {% endblock %}
+    </header>
+    <nav     class="bg-danger text-white text-center py-3 col-12">
+        {% block nav %} {% endblock %}
+    </nav>
+    <article class="bg-light     text-black text-center py-3 col-3  col-sm-12 col-md-3  col-lg-3">
+        {% block article %} {% endblock %}
+    </article>
+    <section class="bg-warning   text-white text-center py-3 col-6  col-sm-12 col-md-6  col-lg-6">
+        {% block section %} {% endblock %}
+    </section>
+    <aside   class="bg-dark      text-white text-center py-3 col-3  col-sm-12 col-md-3  col-lg-3">
+        {% block aside %} {% endblock %}
+    </aside>
+    <footer  class="bg-secondary text-white text-center py-3 col-12 col-sm-12 col-md-12 col-lg-12">
+        {% block footer %} {% endblock %}
+    </footer>
+</div>
+</body>
+</html>

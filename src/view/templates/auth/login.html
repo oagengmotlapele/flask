@@ -1,0 +1,66 @@
+{% extends layout %}
+{% block title %}Welcome To 65Bugs{% endblock %}
+{% block header %}
+    {% include "include/header/header1.html" %}
+{% endblock %}
+{% block nav %}
+    {% include "include/nav/nav1.html" %}
+{% endblock %}
+{% block section %}
+    {% set form_header = "Test header"%}
+    {% set responsive = 'mobiles-100 tablets-100 laptops-50 tvs-50' %}
+    <form class="grid" method="POST">
+        <div class="mobile-100 tablets-100 laptops-100 tvs-100 text-align-center">
+            <h1 class="gradient-text">{{ form_header }}</h1>
+        </div>
+        {% set responsive = 'mobiles-100 tablets-100 laptops-50 tvs-50' %}
+        {% set form1=['First Name','Password','Confirm Password','Favorite Color'] %}
+        {% include "include/form/2.html" %}
+
+        {% set responsive = 'mobiles-100 tablets-100 laptops-100 tvs-100' %}
+        {% set form1=['Interest'] %}
+        {% include "include/form/2.html" %}
+
+        {% set parent_responsive = 'mobiles-100 tablets-100 laptops-100 tvs-100' %}
+        {% set button_responsive = 'mobiles-50 tablets-50 laptops-50 tvs-50' %}
+        {% set buttons=['Login','Rigister'] %}
+        {% include "include/form/b1.html" %}
+    </form>
+    <div class="grid">
+        {% set card1 = cards['mission'] %}
+        {% set responsive_card1='mobiles-100 tablets-100 laptops-50 tvs-50' %}
+        {% include "include/card/1.html" %}
+    </div>
+
+{% endblock %}
+{% block aside %}
+    <!-- Buttons that trigger different popups -->
+<button class="open-popup-btn" data-popup-id="login-popup">Open Login</button>
+<button class="open-popup-btn" data-popup-id="service-popup">Open Services</button>
+<button class="open-popup-btn" data-popup-id="contact-popup">Open Contact</button>
+
+{% endblock %}
+{% block footer %}
+ <p>&copy; 2025 Ministry of Youth and Gender Affairs, Botswana. All rights reserved.</p>
+{% endblock %}
+
+{% block popups %}
+    <!-- Popup Overlay and Popup -->
+    <div id="overlay" class="display-none">
+    <div class="popup display-none" id="login-popup" >
+        <button class="close-popup-btn">Close</button>
+        <p>This is the login popup</p>
+    </div>
+
+    <div class="popup display-none" id="service-popup" >
+        <button class="close-popup-btn">Close</button>
+        <p>This is the services popup</p>
+    </div>
+
+    <div class="popup display-none" id="contact-popup" >
+        <button class="close-popup-btn">Close</button>
+        <p>This is the contact popup</p>
+    </div>
+</div>
+
+{% endblock %}

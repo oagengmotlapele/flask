@@ -1,0 +1,14 @@
+{
+  "First Name": {
+        "name": "First Name",
+        "value": "Oageng",
+        "id": "first_name_input",
+        "icon": "user",
+        "type": "text",
+        "placeholder": "Enter your first name",
+        "required": True,
+        "maxlength": 30,
+        "autocomplete": "given-name",
+        "help_text": "Your given name as it appears on your ID."
+    },
+}

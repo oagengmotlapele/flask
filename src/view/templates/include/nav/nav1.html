@@ -1,0 +1,111 @@
+<!-- NAVIGATION BAR -->
+<nav class="nav1 nav1-tablets nav1-mobile zp-index-10" id="nav1">
+    <div class="left-nav border-none">
+        <a href="#" class="gradient-text">65Bugs</a>
+    </div>
+
+    <button class="hamburger" id="hamburger-toggle">☰ Open</button>
+
+    <div class="center-nav">
+        <ul class="menu">
+            {% for i in nav['center_nav'] %}
+                {% if i['depth'] == 0 %}
+                    <li>
+
+                        <a  href="{{ i['href'] }}">
+                            <i class="{{ i['icon'] }}"></i>
+                            <span> {{ i['txt'] }}</span>
+                        </a>
+
+                    </li>
+                {% elif i['depth'] == 1 %}
+                    <li>
+                        <a href="{{ i['href'] }}" class="has-submenu">
+                            <i class="{{ i['icon'] }}"></i>
+                            <span> {{ i['txt'] }}  ▼</span>
+                        </a>
+                        <ul class="sub-menu">
+                            {% for j in i['sub'] %}
+                                <li><a href="{{ j['href'] }}">{{ j['txt'] }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% elif i['depth'] == 2 %}
+                    <li>
+                        <a href="{{ i['href'] }}" class="has-submenu">
+                            <i class="{{ i['icon'] }}"></i>
+                            <span> {{ i['txt'] }} ▼</span>
+                        </a>
+                        <ul class="sub-menu">
+                            {% for j in i['sub1'] %}
+                                {% if j['depth'] == 0 %}
+                                    <li><a href="{{ j['href'] }}">{{ j['txt'] }}</a></li>
+                                {% else %}
+                                    <li>
+                                        <a href="{{ j['href'] }}" class="has-submenu sub-right">{{ j['txt'] }} ▶</a>
+                                        <ul class="sub-menu">
+                                            {% for k in j['sub'] %}
+                                                <li><a href="{{ k['href'] }}">{{ k['txt'] }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="right-nav">
+        <ul class="right-menu">
+            {% for i in nav['right_nav'] %}
+                {% if i['depth'] == 0 %}
+                    <li>
+
+                        <a  href="{{ i['href'] }}">
+                            <i class="{{ i['icon'] }}"></i>
+                            <span> {{ i['txt'] }}</span>
+                        </a>
+
+                    </li>
+                {% elif i['depth'] == 1 %}
+                    <li>
+                        <a href="{{ i['href'] }}" class="has-submenu">
+                            <i class="{{ i['icon'] }}"></i>
+                            <span> {{ i['txt'] }}  ▼</span>
+                        </a>
+                        <ul class="sub-menu">
+                            {% for j in i['sub'] %}
+                                <li><a href="{{ j['href'] }}">{{ j['txt'] }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% elif i['depth'] == 2 %}
+                    <li>
+                        <a href="{{ i['href'] }}" class="has-submenu">
+                            <i class="{{ i['icon'] }}"></i>
+                            <span> {{ i['txt'] }} ▼</span>
+                        </a>
+                        <ul class="sub-menu">
+                            {% for j in i['sub1'] %}
+                                {% if j['depth'] == 0 %}
+                                    <li><a href="{{ j['href'] }}">{{ j['txt'] }}</a></li>
+                                {% else %}
+                                    <li>
+                                        <a href="{{ j['href'] }}" class="has-submenu sub-right">{{ j['txt'] }} ▶</a>
+                                        <ul class="sub-menu">
+                                            {% for k in j['sub'] %}
+                                                <li><a href="{{ k['href'] }}">{{ k['txt'] }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</nav>

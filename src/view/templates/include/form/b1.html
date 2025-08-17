@@ -1,0 +1,9 @@
+<div class="{{ parent_responsive }}">
+    <div class="grid">
+        {% for i in buttons %}
+        <div id="form-button" class="{{ button_responsive }} justify-content-center">
+            <input class="btn10 width-75" type="submit" value="{{ i }}">
+        </div>
+        {% endfor %}
+    </div>
+</div>

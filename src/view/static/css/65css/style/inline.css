@@ -1,0 +1,37 @@
+a:visited {
+    color: inherit; /* or use the same color */
+    text-decoration: none; /* optional */
+}
+
+.zp-index-1 {
+    position: relative;
+    z-index: 1;
+}
+
+.zp-index-10 {
+    position: relative;
+    z-index: 10;
+}
+
+.color-black{
+    color: #000000;
+}
+
+.circle-link {
+  display: inline-block;
+  text-decoration: none;
+}
+.circle-link .fa-stack-2x {
+  color: var(--color-light);  /* ✅ background circle color (blue) */
+}
+.circle-link .fa-stack-1x {
+  color: var(--color-default); ;  /* ✅ icon color (white) */
+}
+
+.circle-link:hover .fa-stack-2x {
+  color: var(--color-light);  /* new background circle color */
+}
+
+.circle-link:hover .fa-stack-1x {
+  color: var(--color-pass);     /* new icon color */
+}

@@ -1,0 +1,19 @@
+.btn10 {
+  padding: 1.1rem;
+  border-radius: 6px;
+  transition: all ease 0.6s;
+  font-size: 18px;
+  font-weight:bold;
+  background-color: var(--color-default);
+  border : solid 1px red;
+  box-shadow: 4px 6px 8px var(--color-default);
+  color: var(--color-default);
+}
+
+.btn10:hover {
+  transition: all ease 0.1 0.5s;
+  background-color: var(--color-default);
+  border: 2px solid var(--color-default);
+  box-shadow: 2px 4px 6px var(--color-pass);
+  color: var(--color-light);
+}

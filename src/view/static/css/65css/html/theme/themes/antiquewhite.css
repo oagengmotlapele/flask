@@ -1,0 +1,430 @@
+.antiquewhite-theme {
+  --color-light: #ffffff;
+  --color-dark: #000000;
+  --color-error: #ff0000;
+  --color-pass: #00cc66;
+  --color-default: #FAEBD7;
+
+  --body-background-color: var(--color-default);
+  --body-text-color: var(--color-dark);
+  --body-outline-color: var(--color-default);
+  --nav-background-color: var(--color-default);
+  --nav-text-color: var(--color-dark);
+  --nav-outline-color: var(--color-default);
+  --header-background-color: var(--color-default);
+  --header-text-color: var(--color-dark);
+  --header-outline-color: var(--color-default);
+  --main-background-color: var(--color-default);
+  --main-text-color: var(--color-dark);
+  --main-outline-color: var(--color-default);
+  --section-background-color: var(--color-default);
+  --section-text-color: var(--color-dark);
+  --section-outline-color: var(--color-default);
+  --footer-background-color: var(--color-default);
+  --footer-text-color: var(--color-dark);
+  --footer-outline-color: var(--color-default);
+  --p-text-color: var(--color-dark);
+  --p-border-color: var(--color-light);
+  --p-border-top-color: var(--color-light);
+  --p-border-bottom-color: var(--color-light);
+  --p-border-left-color: var(--color-light);
+  --p-border-right-color: var(--color-light);
+  --p-outline-color: var(--color-default);
+  --span-text-color: var(--color-dark);
+  --span-border-color: var(--color-light);
+  --span-border-top-color: var(--color-light);
+  --span-border-bottom-color: var(--color-light);
+  --span-border-left-color: var(--color-light);
+  --span-border-right-color: var(--color-light);
+  --span-outline-color: var(--color-default);
+  --a-text-color: var(--color-dark);
+  --a-border-color: var(--color-light);
+  --a-border-top-color: var(--color-light);
+  --a-border-bottom-color: var(--color-light);
+  --a-border-left-color: var(--color-light);
+  --a-border-right-color: var(--color-light);
+  --a-outline-color: var(--color-default);
+  --button-background-color: var(--color-default);
+  --button-text-color: var(--color-dark);
+  --button-border-color: var(--color-light);
+  --button-border-top-color: var(--color-light);
+  --button-border-bottom-color: var(--color-light);
+  --button-border-left-color: var(--color-light);
+  --button-border-right-color: var(--color-light);
+  --button-outline-color: var(--color-default);
+  --aside-background-color: var(--color-default);
+  --aside-text-color: var(--color-dark);
+  --aside-border-color: var(--color-light);
+  --aside-border-top-color: var(--color-light);
+  --aside-border-bottom-color: var(--color-light);
+  --aside-border-left-color: var(--color-light);
+  --aside-border-right-color: var(--color-light);
+  --aside-outline-color: var(--color-default);
+  --article-background-color: var(--color-default);
+  --article-text-color: var(--color-dark);
+  --article-border-color: var(--color-light);
+  --article-border-top-color: var(--color-light);
+  --article-border-bottom-color: var(--color-light);
+  --article-border-left-color: var(--color-light);
+  --article-border-right-color: var(--color-light);
+  --article-outline-color: var(--color-default);
+  --figure-background-color: var(--color-default);
+  --figure-text-color: var(--color-dark);
+  --figure-border-color: var(--color-light);
+  --figure-border-top-color: var(--color-light);
+  --figure-border-bottom-color: var(--color-light);
+  --figure-border-left-color: var(--color-light);
+  --figure-border-right-color: var(--color-light);
+  --figure-outline-color: var(--color-default);
+  --label-text-color: var(--color-dark);
+  --label-border-color: var(--color-light);
+  --label-border-top-color: var(--color-light);
+  --label-border-bottom-color: var(--color-light);
+  --label-border-left-color: var(--color-light);
+  --label-border-right-color: var(--color-light);
+  --label-outline-color: var(--color-default);
+  --form-background-color: var(--color-light);
+  --form-text-color: var(--color-dark);
+  --form-border-color: var(--color-light);
+  --form-border-top-color: var(--color-light);
+  --form-border-bottom-color: var(--color-light);
+  --form-border-left-color: var(--color-light);
+  --form-border-right-color: var(--color-light);
+  --form-outline-color: var(--color-default);
+  --fieldset-background-color: var(--color-default);
+  --fieldset-text-color: var(--color-dark);
+  --fieldset-border-color: var(--color-light);
+  --fieldset-border-top-color: var(--color-light);
+  --fieldset-border-bottom-color: var(--color-light);
+  --fieldset-border-left-color: var(--color-light);
+  --fieldset-border-right-color: var(--color-light);
+  --fieldset-outline-color: var(--color-default);
+  --legend-text-color: var(--color-dark);
+  --legend-border-color: var(--color-light);
+  --legend-border-top-color: var(--color-light);
+  --legend-border-bottom-color: var(--color-light);
+  --legend-border-left-color: var(--color-light);
+  --legend-border-right-color: var(--color-light);
+  --legend-outline-color: var(--color-default);
+  --textarea-background-color: var(--color-default);
+  --textarea-text-color: var(--color-dark);
+  --textarea-border-color: var(--color-light);
+  --textarea-border-top-color: var(--color-light);
+  --textarea-border-bottom-color: var(--color-light);
+  --textarea-border-left-color: var(--color-light);
+  --textarea-border-right-color: var(--color-light);
+  --textarea-outline-color: var(--color-default);
+  --input-background-color: var(--color-light);
+  --input-text-color: var(--color-dark);
+  --input-border-color: var(--color-light);
+  --input-border-top-color: var(--color-light);
+  --input-border-bottom-color: var(--color-light);
+  --input-border-left-color: var(--color-light);
+  --input-border-right-color: var(--color-light);
+  --input-outline-color: var(--color-default);
+  --select-background-color: var(--color-default);
+  --select-text-color: var(--color-dark);
+  --select-border-color: var(--color-light);
+  --select-border-top-color: var(--color-light);
+  --select-border-bottom-color: var(--color-light);
+  --select-border-left-color: var(--color-light);
+  --select-border-right-color: var(--color-light);
+  --select-outline-color: var(--color-default);
+  --sub-menu-background-color: var(--color-default);
+  --sub-menu-text-color: var(--color-dark);
+  --sub-menu-border-color: var(--color-light);
+  --sub-menu-border-top-color: var(--color-light);
+  --sub-menu-border-bottom-color: var(--color-light);
+  --sub-menu-border-left-color: var(--color-light);
+  --sub-menu-border-right-color: var(--color-light);
+  --sub-menu-outline-color: var(--color-default);
+  --sub-menu1-background-color: var(--color-default);
+  --sub-menu1-text-color: var(--color-dark);
+  --sub-menu1-border-color: var(--color-light);
+  --sub-menu1-border-top-color: var(--color-light);
+  --sub-menu1-border-bottom-color: var(--color-light);
+  --sub-menu1-border-left-color: var(--color-light);
+  --sub-menu1-border-right-color: var(--color-light);
+  --sub-menu1-outline-color: var(--color-default);
+  --sub-menu2-background-color: var(--color-default);
+  --sub-menu2-text-color: var(--color-dark);
+  --sub-menu2-border-color: var(--color-light);
+  --sub-menu2-border-top-color: var(--color-light);
+  --sub-menu2-border-bottom-color: var(--color-light);
+  --sub-menu2-border-left-color: var(--color-light);
+  --sub-menu2-border-right-color: var(--color-light);
+  --sub-menu2-outline-color: var(--color-default);
+  --sub-menu3-background-color: var(--color-default);
+  --sub-menu3-text-color: var(--color-dark);
+  --sub-menu3-border-color: var(--color-light);
+  --sub-menu3-border-top-color: var(--color-light);
+  --sub-menu3-border-bottom-color: var(--color-light);
+  --sub-menu3-border-left-color: var(--color-light);
+  --sub-menu3-border-right-color: var(--color-light);
+  --sub-menu3-outline-color: var(--color-default);
+}
+
+.antiquewhite-theme body {
+  background-color: var(--body-background-color);
+  text-color: var(--body-text-color);
+  outline-color: var(--body-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme nav {
+  background-color: var(--nav-background-color);
+  text-color: var(--nav-text-color);
+  outline-color: var(--nav-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme header {
+  background-color: var(--header-background-color);
+  text-color: var(--header-text-color);
+  outline-color: var(--header-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme main {
+  background-color: var(--main-background-color);
+  text-color: var(--main-text-color);
+  outline-color: var(--main-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme section {
+  background-color: var(--section-background-color);
+  text-color: var(--section-text-color);
+  outline-color: var(--section-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme footer {
+  background-color: var(--footer-background-color);
+  text-color: var(--footer-text-color);
+  outline-color: var(--footer-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme p {
+  text-color: var(--p-text-color);
+  border-color: var(--p-border-color);
+  border-top-color: var(--p-border-top-color);
+  border-bottom-color: var(--p-border-bottom-color);
+  border-left-color: var(--p-border-left-color);
+  border-right-color: var(--p-border-right-color);
+  outline-color: var(--p-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme span {
+  text-color: var(--span-text-color);
+  border-color: var(--span-border-color);
+  border-top-color: var(--span-border-top-color);
+  border-bottom-color: var(--span-border-bottom-color);
+  border-left-color: var(--span-border-left-color);
+  border-right-color: var(--span-border-right-color);
+  outline-color: var(--span-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme a {
+  text-color: var(--a-text-color);
+  border-color: var(--a-border-color);
+  border-top-color: var(--a-border-top-color);
+  border-bottom-color: var(--a-border-bottom-color);
+  border-left-color: var(--a-border-left-color);
+  border-right-color: var(--a-border-right-color);
+  outline-color: var(--a-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme button {
+  background-color: var(--button-background-color);
+  text-color: var(--button-text-color);
+  border-color: var(--button-border-color);
+  border-top-color: var(--button-border-top-color);
+  border-bottom-color: var(--button-border-bottom-color);
+  border-left-color: var(--button-border-left-color);
+  border-right-color: var(--button-border-right-color);
+  outline-color: var(--button-outline-color);
+  outline: 2px solid var(--button-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme aside {
+  background-color: var(--aside-background-color);
+  text-color: var(--aside-text-color);
+  border-color: var(--aside-border-color);
+  border-top-color: var(--aside-border-top-color);
+  border-bottom-color: var(--aside-border-bottom-color);
+  border-left-color: var(--aside-border-left-color);
+  border-right-color: var(--aside-border-right-color);
+  outline-color: var(--aside-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme article {
+  background-color: var(--article-background-color);
+  text-color: var(--article-text-color);
+  border-color: var(--article-border-color);
+  border-top-color: var(--article-border-top-color);
+  border-bottom-color: var(--article-border-bottom-color);
+  border-left-color: var(--article-border-left-color);
+  border-right-color: var(--article-border-right-color);
+  outline-color: var(--article-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme figure {
+  background-color: var(--figure-background-color);
+  text-color: var(--figure-text-color);
+  border-color: var(--figure-border-color);
+  border-top-color: var(--figure-border-top-color);
+  border-bottom-color: var(--figure-border-bottom-color);
+  border-left-color: var(--figure-border-left-color);
+  border-right-color: var(--figure-border-right-color);
+  outline-color: var(--figure-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme label {
+  text-color: var(--label-text-color);
+  border-color: var(--label-border-color);
+  border-top-color: var(--label-border-top-color);
+  border-bottom-color: var(--label-border-bottom-color);
+  border-left-color: var(--label-border-left-color);
+  border-right-color: var(--label-border-right-color);
+  outline-color: var(--label-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme form {
+  background-color: var(--form-background-color);
+  text-color: var(--form-text-color);
+  border-color: var(--form-border-color);
+  border-top-color: var(--form-border-top-color);
+  border-bottom-color: var(--form-border-bottom-color);
+  border-left-color: var(--form-border-left-color);
+  border-right-color: var(--form-border-right-color);
+  outline-color: var(--form-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme fieldset {
+  background-color: var(--fieldset-background-color);
+  text-color: var(--fieldset-text-color);
+  border-color: var(--fieldset-border-color);
+  border-top-color: var(--fieldset-border-top-color);
+  border-bottom-color: var(--fieldset-border-bottom-color);
+  border-left-color: var(--fieldset-border-left-color);
+  border-right-color: var(--fieldset-border-right-color);
+  outline-color: var(--fieldset-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme legend {
+  text-color: var(--legend-text-color);
+  border-color: var(--legend-border-color);
+  border-top-color: var(--legend-border-top-color);
+  border-bottom-color: var(--legend-border-bottom-color);
+  border-left-color: var(--legend-border-left-color);
+  border-right-color: var(--legend-border-right-color);
+  outline-color: var(--legend-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme textarea {
+  background-color: var(--textarea-background-color);
+  text-color: var(--textarea-text-color);
+  border-color: var(--textarea-border-color);
+  border-top-color: var(--textarea-border-top-color);
+  border-bottom-color: var(--textarea-border-bottom-color);
+  border-left-color: var(--textarea-border-left-color);
+  border-right-color: var(--textarea-border-right-color);
+  outline-color: var(--textarea-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme input {
+  background-color: var(--input-background-color);
+  text-color: var(--input-text-color);
+  border-color: var(--input-border-color);
+  border-top-color: var(--input-border-top-color);
+  border-bottom-color: var(--input-border-bottom-color);
+  border-left-color: var(--input-border-left-color);
+  border-right-color: var(--input-border-right-color);
+  outline-color: var(--input-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme select {
+  background-color: var(--select-background-color);
+  text-color: var(--select-text-color);
+  border-color: var(--select-border-color);
+  border-top-color: var(--select-border-top-color);
+  border-bottom-color: var(--select-border-bottom-color);
+  border-left-color: var(--select-border-left-color);
+  border-right-color: var(--select-border-right-color);
+  outline-color: var(--select-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme .glass-div {
+  color: var(--text-color);
+  font-weight: bold;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.antiquewhite-theme .sub-menu {
+  background-color: var(--sub-menu-background-color);
+  text-color: var(--sub-menu-text-color);
+  border-color: var(--sub-menu-border-color);
+  border-top-color: var(--sub-menu-border-top-color);
+  border-bottom-color: var(--sub-menu-border-bottom-color);
+  border-left-color: var(--sub-menu-border-left-color);
+  border-right-color: var(--sub-menu-border-right-color);
+  outline-color: var(--sub-menu-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme .sub-menu1 {
+  background-color: var(--sub-menu1-background-color);
+  text-color: var(--sub-menu1-text-color);
+  border-color: var(--sub-menu1-border-color);
+  border-top-color: var(--sub-menu1-border-top-color);
+  border-bottom-color: var(--sub-menu1-border-bottom-color);
+  border-left-color: var(--sub-menu1-border-left-color);
+  border-right-color: var(--sub-menu1-border-right-color);
+  outline-color: var(--sub-menu1-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme .sub-menu2 {
+  background-color: var(--sub-menu2-background-color);
+  text-color: var(--sub-menu2-text-color);
+  border-color: var(--sub-menu2-border-color);
+  border-top-color: var(--sub-menu2-border-top-color);
+  border-bottom-color: var(--sub-menu2-border-bottom-color);
+  border-left-color: var(--sub-menu2-border-left-color);
+  border-right-color: var(--sub-menu2-border-right-color);
+  outline-color: var(--sub-menu2-outline-color);
+  border-radius: 5px;
+}
+
+.antiquewhite-theme .sub-menu3 {
+  background-color: var(--sub-menu3-background-color);
+  text-color: var(--sub-menu3-text-color);
+  border-color: var(--sub-menu3-border-color);
+  border-top-color: var(--sub-menu3-border-top-color);
+  border-bottom-color: var(--sub-menu3-border-bottom-color);
+  border-left-color: var(--sub-menu3-border-left-color);
+  border-right-color: var(--sub-menu3-border-right-color);
+  outline-color: var(--sub-menu3-outline-color);
+  border-radius: 5px;
+}
+

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <title>Contact Cards Manager with Images</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      overflow-x: hidden;
+    }
+    #cardList {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 992px) {
+      #cardList {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .card-team1-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,.1);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      position: relative;
+      padding: 15px;
+      width: 100%;
+    }
+    .card-team1-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .card-team1-card-content {
+      flex: 1;
+      margin-left: 15px;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .card-team1-card-content h3 {
+      margin: 0 0 5px;
+      font-size: 1.1em;
+    }
+    .card-team1-card-content h4 {
+      margin: 0 0 8px;
+      color: #555;
+      font-size: .95em;
+    }
+    .card-team1-card-content p {
+      margin: 0 0 10px;
+      color: #666;
+      line-height: 1.4;
+      min-height: 3em;
+    }
+    .card-team1-card-footer {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      width: 100%;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+      margin-top: 5px;
+    }
+    .card-team1-card-footer a {
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.5em;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .card-team1-card-footer a:hover {
+      opacity: 0.8;
+    }
+    .card-team1-actions {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .card-team1-actions button {
+      background: #0073e6;
+      border: none;
+      color: #fff;
+      padding: 6px;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #addCardBtn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 12px 20px;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .card-team1-modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 10%;
+      top: 10%;
+      width: 80%;
+      height: 80%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,.3);
+    }
+    .card-team1-modal.active {
+      display: block;
+    }
+    #cardForm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card-team1-input-group {
+      position: relative;
+      margin-bottom: 20px;
+      width: 90%;
+    }
+    .card-team1-input-group input,
+    .card-team1-input-group textarea,
+    .card-team1-input-group select {
+      width: 100%;
+      padding: 12px 12px 12px 45px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      background: #fff;
+    }
+    .card-team1-input-group label {
+      position: absolute;
+      top: 12px;
+      left: 45px;
+      color: #aaa;
+      font-size: 16px;
+      pointer-events: none;
+      transition: 0.2s ease all;
+    }
+    .card-team1-input-group input:focus + label,
+    .card-team1-input-group input:not(:placeholder-shown) + label,
+    .card-team1-input-group textarea:focus + label,
+    .card-team1-input-group textarea:not(:placeholder-shown) + label,
+    .card-team1-input-group select:focus + label,
+    .card-team1-input-group select:not([value=""]) + label {
+      top: -10px;
+      left: 40px;
+      font-size: 12px;
+      color: #0073e6;
+      background: #fff;
+      padding: 0 4px;
+    }
+    .card-team1-input-group > i {
+      position: absolute;
+      left: 15px;
+      top: 14px;
+      font-size: 18px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    /* --- Brand Icon Colors --- */
+    .fa-facebook-f { color: #1877F2; }
+    .fa-linkedin-in { color: #0A66C2; }
+    .fa-twitter { color: #1DA1F2; }
+    .fa-whatsapp { color: #25D366; }
+    /* --- End Brand Icon Colors --- */
+    textarea {
+      min-height: 3em;
+      resize: vertical;
+    }
+    .card-team1-modal-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .card-team1-modal-buttons button {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .card-team1-btn-save {
+      background: #0073e6;
+      color: #fff;
+    }
+    .card-team1-btn-cancel {
+      background: #ccc;
+    }
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      color: #555;
+      font-weight: bold;
+      padding: 0 8px;
+      transition: color 0.2s ease;
+    }
+    .close-btn:hover {
+      color: #0073e6;
+    }
+    @media(max-width:600px) {
+      .card-team1-card {
+        padding: 12px;
+      }
+      .card-team1-card img {
+        width: 60px;
+        height: 60px;
+      }
+      .card-team1-card-content h3 {
+        font-size: 1em;
+      }
+      .card-team1-card-content h4 {
+        font-size: .9em;
+      }
+      .card-team1-actions {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 8px;
+        justify-content: center;
+        width: 100%;
+      }
+      .card-team1-actions button {
+        flex: 1;
+        font-size: 12px;
+        padding: 6px;
+      }
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+<div id="cardList"></div>
+
+<button id="addCardBtn">Add Contact</button>
+
+<div class="card-team1-modal" id="cardModal">
+  <div class="modal-header">
+    <h2 id="modalTitle">Add Contact</h2>
+    <button class="close-btn" aria-label="Close modal">&times;</button>
+  </div>
+  <form id="cardForm">
+    <div class="card-team1-input-group">
+      <i class="fas fa-user"></i>
+      <input id="fullName" name="fullName" type="text" required placeholder=" " />
+      <label for="fullName">Full Name *</label>
+    </div>
+
+    <div class="card-team1-input-group">
+      <i class="fas fa-briefcase"></i>
+      <input id="role" name="role" type="text" required placeholder=" " />
+      <label for="role">Role *</label>
+    </div>
+
+    <div class="card-team1-input-group">
+      <i class="fas fa-paragraph"></i>
+      <textarea id="description" name="description" required placeholder=" "></textarea>
+      <label for="description">Description *</label>
+    </div>
+
+    <div class="card-team1-input-group">
+      <i class="fas fa-image"></i>
+      <input id="imageUpload" name="imageUpload" type="file" accept="image/*" />
+      <label for="imageUpload" style="top: -10px;">Upload Image</label>
+    </div>
+
+    <div class="card-team1-input-group">
+      <i class="fab fa-facebook-f"></i>
+      <input id="facebook" name="facebook" type="url" required placeholder=" " />
+      <label for="facebook">Facebook URL *</label>
+    </div>
+
+    <div class="card-team1-input-group">
+      <i class="fab fa-linkedin-in"></i>
+      <input id="linkedin" name="linkedin" type="url" required placeholder=" " />
+      <label for="linkedin">LinkedIn URL *</label>
+    </div>
+
+    <div class="card-team1-input-group">
+      <i class="fab fa-twitter"></i>
+      <input id="twitter" name="twitter" type="url" required placeholder=" " />
+      <label for="twitter">Twitter URL *</label>
+    </div>
+
+    <div class="card-team1-input-group">
+      <i class="fab fa-whatsapp"></i>
+      <input id="whatsapp" name="whatsapp" type="url" required placeholder=" " />
+      <label for="whatsapp">WhatsApp URL *</label>
+    </div>
+
+    <div class="card-team1-modal-buttons">
+      <button type="submit" class="card-team1-btn-save">Save</button>
+      <button type="button" class="card-team1-btn-cancel" id="cancelBtn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  const cardList = document.getElementById('cardList');
+  const addCardBtn = document.getElementById('addCardBtn');
+  const cardModal = document.getElementById('cardModal');
+  const closeBtn = cardModal.querySelector('.close-btn');
+  const cancelBtn = document.getElementById('cancelBtn');
+  const cardForm = document.getElementById('cardForm');
+  const modalTitle = document.getElementById('modalTitle');
+
+  // Cards data array, initial card includes a default image
+  let cardsData = [{
+    fullName: "John Doe",
+    role: "Lead Developer",
+    description: "The rockstar who codes faster than a Python interpreter compiles bytecode. Loves real estate and software startups.",
+    facebook: "https://facebook.com/johndoe",
+    linkedin: "https://linkedin.com/in/johndoe",
+    twitter: "https://twitter.com/johndoe",
+    whatsapp: "https://wa.me/1234567890",
+    image: null // no image initially
+  }];
+
+  let editIndex = null; // track which card is being edited
+
+  // Sanitize text for HTML
+  function esc(text) {
+    return text.replace(/[&<>"']/g, m => ({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#39;'
+    })[m]);
+  }
+
+  function renderCards() {
+    cardList.innerHTML = '';
+    cardsData.forEach((card, index) => {
+      let imgSrc;
+      if (card.image) {
+        imgSrc = card.image;
+      } else {
+        // fallback to initials placeholder
+        const initials = card.fullName.split(' ').map(n => n[0].toUpperCase()).join('');
+        imgSrc = `https://via.placeholder.com/100?text=${initials}`;
+      }
+
+      const cardEl = document.createElement('div');
+      cardEl.className = 'card-team1-card';
+      cardEl.dataset.index = index;
+      cardEl.innerHTML = `
+        <img src="${imgSrc}" alt="${esc(card.fullName)}" />
+        <div class="card-team1-card-content">
+          <h3>${esc(card.fullName)}</h3>
+          <h4>${esc(card.role)}</h4>
+          <p>${esc(card.description)}</p>
+          <div class="card-team1-card-footer">
+            <a href="${esc(card.facebook)}" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="${esc(card.linkedin)}" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="${esc(card.twitter)}" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="${esc(card.whatsapp)}" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="card-team1-actions">
+          <button data-action="edit" aria-label="Edit Card">✏️</button>
+          <button data-action="delete" aria-label="Delete Card">🗑️</button>
+        </div>
+      `;
+      cardList.appendChild(cardEl);
+    });
+  }
+
+  function openModal(index = null) {
+    editIndex = index;
+    if (index !== null) {
+      const card = cardsData[index];
+      cardForm.fullName.value = card.fullName;
+      cardForm.role.value = card.role;
+      cardForm.description.value = card.description;
+      cardForm.facebook.value = card.facebook;
+      cardForm.linkedin.value = card.linkedin;
+      cardForm.twitter.value = card.twitter;
+      cardForm.whatsapp.value = card.whatsapp;
+      // clear file input, no way to pre-fill file for security reasons
+      cardForm.imageUpload.value = '';
+      modalTitle.textContent = "Edit Contact";
+    } else {
+      cardForm.reset();
+      modalTitle.textContent = "Add Contact";
+      editIndex = null;
+    }
+    cardModal.classList.add('active');
+  }
+
+  function closeModal() {
+    cardModal.classList.remove('active');
+    editIndex = null;
+  }
+
+  cardForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const newCard = {
+      fullName: cardForm.fullName.value.trim(),
+      role: cardForm.role.value.trim(),
+      description: cardForm.description.value.trim(),
+      facebook: cardForm.facebook.value.trim(),
+      linkedin: cardForm.linkedin.value.trim(),
+      twitter: cardForm.twitter.value.trim(),
+      whatsapp: cardForm.whatsapp.value.trim(),
+      image: null
+    };
+
+    // Validate required fields
+    if (!newCard.fullName || !newCard.role || !newCard.description || !newCard.facebook || !newCard.linkedin || !newCard.twitter || !newCard.whatsapp) {
+      alert("Please fill all required fields!");
+      return;
+    }
+
+    // Handle image upload
+    const file = cardForm.imageUpload.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        newCard.image = evt.target.result;
+
+        if (editIndex !== null) {
+          cardsData[editIndex] = newCard;
+        } else {
+          cardsData.push(newCard);
+        }
+        renderCards();
+        closeModal();
+      };
+      reader.readAsDataURL(file);
+    } else {
+      // Keep existing image if editing
+      if (editIndex !== null) {
+        newCard.image = cardsData[editIndex].image || null;
+        cardsData[editIndex] = newCard;
+      } else {
+        cardsData.push(newCard);
+      }
+      renderCards();
+      closeModal();
+    }
+  });
+
+  cardList.addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+
+    const cardEl = btn.closest('.card-team1-card');
+    const index = Number(cardEl.dataset.index);
+    const action = btn.dataset.action;
+
+    if (action === 'edit') {
+      openModal(index);
+    } else if (action === 'delete') {
+      if (confirm("Are you sure you want to delete this contact?")) {
+        cardsData.splice(index, 1);
+        renderCards();
+      }
+    }
+  });
+
+  addCardBtn.addEventListener('click', () => openModal());
+  closeBtn.addEventListener('click', closeModal);
+  cancelBtn.addEventListener('click', closeModal);
+
+  renderCards();
+</script>
+
+</body>
+</html>

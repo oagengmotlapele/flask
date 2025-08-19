@@ -12,10 +12,6 @@ app = create_app()
 @app.before_request
 def save_last_visited_url():
     session.permanent=True
-    exclude_endpoints = ('static', 'index_view.set_theme')
-
-    if request.endpoint not in exclude_endpoints:
-        session['last_url'] = request.url
     if not session.get('theme'):
         session['theme'] = 'skyblue'
 

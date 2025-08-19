@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="{{theme}}-theme">
+<html lang="en" class="{{base['theme']}}-theme">
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Oageng Motlapele">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %} {% endblock %}</title>
-    {% for css_file in css %}
+    {% for css_file in base['css'] %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename=css_file) }}">
     {% endfor %}
 </head>
@@ -38,38 +38,39 @@
             <input type="radio" name="tab-group" id="view-tab" class="hidden-input">
             {% endif %}
             <div class="tab-header">
-                {% if usr['role'] in role_permission['add_mission'] and usr['id'] not in user_id_permission['add_permission'] %}
+                {% if (usr_id_rights['add'] or role_rights['add']) and usr_id_rights['add'] != False %}
                 <label for="add-tab"><i class="fa fa-plus"></i>Add</label>
                 {% endif %}
-                {% if user['role'] in role_permission['update_permission'] and user['id'] not in user_id_permission['update_permission'] %}
+                {% if (usr_id_rights['update'] or role_rights['update']) and usr_id_rights['update'] != False %}
                 <label for="update-tab"><i class="fa fa-edit"></i>Update</label>
                 {% endif %}
-                {% if user['role'] in role_permission['delete_permission'] and user['id'] not in user_id_permission['delete_permission'] %}
+                {% if (usr_id_rights['del'] or role_rights['del']) and usr_id_rights['del'] != False %}
                 <label for="delete-tab"><i class="fa fa-trash"></i>Delete</label>
                 {% endif %}
-                {% if user['role'] in role_permission['view_permission'] and user['id'] not in user_id_permission['view_permission'] %}
+                {% if (usr_id_rights['view'] or role_rights['view']) and usr_id_rights['view'] != False %}
                 <label for="view-tab"><i class="fa fa-eye"></i>View</label>
                 {% endif %}
             </div>
             <!-- Tab content sections. Note the new IDs. -->
-            {% if user_role in role_permission['write_permission'] and username not in user_id_permission['write_permission'] %}
+            {% if (usr_id_rights['add'] or role_rights['add']) and usr_id_rights['add'] != False %}
             <div id="add-content" class="tab-content">
                 {% block add_tab %} {% endblock %}
             </div>
             {% endif %}
-            {% if user['role'] in role_permission['update_permission'] and user['id'] not in user_id_permission['update_permission'] %}
 
+            {% if (usr_id_rights['update'] or role_rights['update']) and usr_id_rights['update'] != False %}
             <div id="update-content" class="tab-content">
                 {% block update_tab %} {% endblock %}
             </div>
             {% endif %}
-            {% if user['role'] in role_permission['delete_permission'] and user['id'] not in user_id_permission['delete_permission'] %}
 
+            {% if (usr_id_rights['del'] or role_rights['del']) and usr_id_rights['del'] != False %}
             <div id="delete-content" class="tab-content">
                 {% block delete_tab %} {% endblock %}
             </div>
             {% endif %}
-            {% if user['role'] in role_permission['view_permission'] and user['id'] not in user_id_permission['view_permission'] %}
+
+            {% if (usr_id_rights['view'] or role_rights['view']) and usr_id_rights['view'] != False %}
             <div id="view-content" class="tab-content">
                 {% block view_tab %} {% endblock %}
             </div>
@@ -83,9 +84,7 @@
 
 {% block popups %} {% endblock %}
 
-
-
-{% for js_file in js %}
+{% for js_file in base['js'] %}
 <script src="{{ url_for('index_view.static', filename=js_file) }}"></script>
 {% endfor %}
 

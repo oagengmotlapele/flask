@@ -2,10 +2,10 @@ import matplotlib
 from dotenv import load_dotenv
 from flask import Blueprint, render_template, request,redirect, session, url_for
 from src.controller.MySQLControllerFlask import MySQLManager
+from src.controller.navs.index import MenuGenerator
 from src.middlewares.encode import Encode
 from src.utils.Security import Security
 from src.utils.files import Files
-from src.model.view_model.nav.users.index.endpoint.root import Nav
 from src.model.view_model.cards.users.index.endpoint.root import Cards
 
 THEMES = list(matplotlib.colors.CSS4_COLORS.keys())
@@ -40,64 +40,7 @@ index = Blueprint('index_view',
 db = MySQLManager()
 
 
-@index.route('/team', methods=['GET', 'POST'])
-def team_handler():
-    db = MySQLManager()
-    TABLE_NAME = "team"
-    user = request.form.get("username", "system_user")
 
-    if request.method == "POST":
-        action = request.form.get("action")
-        full_name = request.form.get("full_name")
-        role = request.form.get("role")
-        member_id = request.form.get("id")
-
-        # INSERT
-        if action == "add":
-            row_data = {
-                "full_name": full_name,
-                "role": role
-            }
-            db.manage_table(
-                table_name=TABLE_NAME,
-                row_data=row_data,
-                query="insert",
-                user=user
-            )
-
-        # UPDATE
-        elif action == "update" and member_id:
-            row_data = {
-                "full_name": full_name,
-                "role": role
-            }
-            where = {"id": int(member_id)}
-            db.manage_table(
-                table_name=TABLE_NAME,
-                row_data=row_data,
-                query="update",
-                where=where,
-                user=user
-            )
-
-        # SOFT DELETE
-        elif action == "delete" and member_id:
-            where = {"id": int(member_id)}
-            db.manage_table(
-                table_name=TABLE_NAME,
-                query="delete",
-                where=where,
-                user=user
-            )
-
-        return redirect("/team")
-
-    # SELECT
-    rows = db.manage_table(
-        table_name=TABLE_NAME,
-        query="select"
-    )
-    return render_template("team.html", team=rows)
 
 
 @index.route('/themes/<theme>',methods=['GET', 'POST'])
@@ -106,13 +49,52 @@ def set_theme(theme):
     session.permanent = True
     return redirect(session.get('last_url') or url_for('index_view.index_view'))
 
-@index.route("/contact")
+@index.route('/about')
+def about():
+    return render_template('about.html')
+
+@index.route('/team')
+def team():
+    return render_template('team.html')
+
+@index.route('/contact')
 def contact():
-    return render_template('endpoints/index/contact.html',)
+    return render_template('contact.html')
+
+@index.route('/services')
+def services():
+    return render_template('services.html')
+
+@index.route('/projects')
+def portfolio():
+    return render_template('portfolio.html')
+
+@index.route('/blog')
+def blog():
+    return render_template('blog.html')
+
+@index.route('/testimonials')
+def testimonials():
+    return render_template('testimonials.html')
+
+@index.route('/faq')
+def faq():
+    return render_template('faq.html')
+
+@index.route('/newsletter')
+def newsletter():
+    return render_template('newsletter.html')
+
+@index.route('/chatbot')
+def chatbot():
+    return render_template('chatbot.html')
 
 @index.route("/")
 def index_view():
-    rights={"fetch":f'user_{file}',
+    files=f"{file}_root"
+    session.permanent= True
+    session['last_url'] = request.url
+    rights={"fetch":f'user_{files}',
              "user":session.get('user')}
     form=[]
     return render_template('index.html',
@@ -120,6 +102,7 @@ def index_view():
                            pic=Encode().base64Encode(pictures_path),
                            usr_id_rights=Security().usr_id_rights(rights=rights),
                            role_rights=Security().role_rights(rights=rights),
-                           nav=Nav().index_py()['/'],
+                           nav=MenuGenerator().get_full_menu(),
                            form=form,
                            )
+

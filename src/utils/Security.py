@@ -8,80 +8,11 @@ from itsdangerous import URLSafeTimedSerializer, BadTimeSignature
 from cryptography.fernet import Fernet, InvalidToken
 class Security:
     def __init__(self):
-        self.system_users = [
-            # System Owners & Developers (65Bugs Pty Ltd)
-            'System Owner',
-            'Project Manager',
-            'Business Analyst',
-            'System Architect',
-            'Lead Developer',
-            'Backend Developer',
-            'Frontend Developer',
-            'Mobile App Developer',
-            'Database Administrator',
-            'DevOps Engineer',
-            'System Administrator',
-            'QA Tester',
-            'UI Or UX Designer',
-            'Technical Support Specialist',
-            'Trainer Or User Support',
-            'Cybersecurity Specialist',
-
-            # Ministry & HQ Level
-            'Minister of Education',
-            'Permanent Secretary',
-            'Deputy Permanent Secretary',
-            'Chief Education Officer',
-            'Regional Or District Education Officer',
-            'School Inspector',
-            'Policy Maker',
-            'Curriculum Developer',
-
-            # School Management
-            'School Principal',
-            'Vice Principal',
-            'Head of House or Head of Department',
-            'Head of Subject or Senior Teacher',
-            'School Administrator',
-            'Bursar or Finance Officer',
-            'Exams Officer',
-            'Records Clerk',
-
-            # Teaching & Academic Staff
-            'Teacher',
-            'Assistant Teacher',
-            'Teacher Aide',
-            'Guidance and Counselling Teacher',
-            'Librarian',
-
-            # Students & Parents
-            'Student',
-            'Parent',
-            'Guardian',
-            'Alumni',
-
-            # Support & Operations
-            'School Nurse',
-            'Counsellor',
-            'Sports Coordinator',
-            'Lab Technician',
-            'IT Technician',
-            'Cleaner',
-            'Security Guard',
-
-            # External Stakeholders
-            'Education NGO Representative',
-            'Government Auditor',
-            'Researcher',
-            'Donor Or Partner Organization',
-        ]
-
         load_dotenv()
         self.key = os.environ.get("app_secrect")
         self.fernet = Fernet(self.generate_supported_fernet_key(self.key))
         self.salt = self.key
-    def get_all_users(self):
-        return self.system_users
+
     def generate_supported_fernet_key(self,raw_key: str) -> bytes:
         """
         Takes any string and returns a valid 32-byte base64-encoded Fernet key.
@@ -141,7 +72,3 @@ class Security:
     def usr_id_rights(self,rights:dict) -> dict:
         pass
 
-security = Security()
-f=security.create_session(1)
-print(f)
-print(security.decrypt_session(f))
